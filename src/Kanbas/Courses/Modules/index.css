@@ -1,0 +1,41 @@
+.wd-modules,
+.wd-modules * {
+  border-radius: 0% ;
+  border: none ;
+  margin: 0px;
+  padding: 0px ;
+}
+
+
+
+.wd-modules > li {
+  background-color: lightgray;
+  border: 1px solid gray !important;
+}
+
+.wd-modules > li > div {
+  padding: 6px;
+  border-left: 1px solid gray !important;
+}
+
+.wd-modules > li > ul > li {
+  padding: 5px;
+  border-top: 1px solid gray !important;
+  border-left: 2px solid green;
+}
+
+.wd-modules > li {
+  margin-bottom: 40px;
+}
+
+.list-group-item > span  {
+    margin-left: 25px;
+}
+
+#nav_main{
+    margin: 0;
+}
+
+.wd-padding-0 {
+  padding: 0px;
+}

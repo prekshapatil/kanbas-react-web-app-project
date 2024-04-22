@@ -1,0 +1,16 @@
+.nav-link.active {
+    color: #fff;
+    background-color: white;
+}
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Optional: to ensure full height alignment */
+}
+
+.bg-color-lightgray
+{
+  background-color: lightgray;
+}

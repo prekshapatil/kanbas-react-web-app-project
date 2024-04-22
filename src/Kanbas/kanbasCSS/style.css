@@ -1,0 +1,429 @@
+.wd-display-block {
+    display: block;
+}
+.wd-kanbas-gray {
+    color: #b0b0b0;
+  }
+  
+  .wd-kanbas-red {
+    color: #d4202d;
+  }
+  
+  .wd-kanbas-black {
+    color: black;
+  }
+  
+  .wd-kanbas-green {
+    color: #06874a;
+  }
+
+  .wd-kanbas-faded-green {
+    color: #06874a;
+    opacity: 0.5;
+  }
+  
+  .wd-kanbas-light-green {
+    color: #09cb6f;
+  }
+  
+  .wd-kanbas-light-gray {
+    color: #f5f5f5;
+  }
+  
+  .wd-kanbas-light-gray-bg {
+    background-color: #f5f5f5;
+  }
+  
+  .wd-kanbas-white {
+    color: white;
+  }
+  
+  .wd-kanbas-sidebar-selected {
+    background-color: white;
+    color: #d41a2d;
+  }
+  
+  .wd-kanbas-sidebar-unselected {
+    background-color: black;
+    color: white;
+  }
+  
+  .wd-kanbas-sidebar {
+    width: 80px;
+    text-align: center;
+    background-color: black;
+  }
+  
+  .wd-kanbas-sidebar-logo {
+    font-size: 40px;
+  }
+  
+  .wd-kanbas-sidebar-text {
+    font-size: 12px;
+  }
+  
+  .wd-kanbas-icon-padding {
+    margin: 4px;
+    padding: 4px;
+  }
+  .wd-kanbas-account {
+    width: 200px;
+    text-align: left;
+  }
+  
+  .wd-kanbas-account-selected {
+    border-left-style: solid;
+    border-left-width: 2px;
+    margin-left: -10px;
+    padding-left: 8px;
+  }
+  
+  .wd-kanbas-account-border {
+    border-style: none;
+    padding-top: -25px;
+    padding-bottom: -25px;
+    margin: -2px;
+  }
+  
+  .wd-kanbas-column {
+    float: left;
+    margin: 8px;
+  }
+
+  .wd-kanbas-column-right-margin {
+    margin-right : 30px;
+  }
+  
+  .wd-kanbas-course-column {
+    width: 80%;
+  }
+  
+  .wd-kanbas-edit-column {
+    width: 60%;
+  }
+  
+  .wd-kanbas-account-icon {
+    font-size: 128px;
+  }
+  
+  .wd-kanbas-no-underline {
+    text-decoration: none;
+  }
+  
+  .wd-kanbas-hyperlink {
+    text-decoration: none;
+    color: #d41a2d;
+  }
+  
+  .wd-kanbas-item-width-400 {
+    width: 400px;
+  }
+  
+  .wd-kanbas-item-width-350 {
+    width: 350px;
+  }
+  
+  .wd-kanbas-item-width-300 {
+    width: 300px;
+  }
+  
+  .wd-kanbas-item-width-250 {
+    width: 250px;
+  }
+  
+  .wd-kanbas-item-width-200 {
+    width: 200px;
+  }
+  
+  .wd-kanbas-item-height-400 {
+    height: 400px;
+  }
+  
+  .wd-kanbas-item-height-200 {
+    height: 200px;
+  }
+  
+  .wd-kanbas-center-heading {
+    text-align: center;
+  }
+  
+  .wd-kanbas-save-profile {
+    color: white;
+    background-color: #d41a2d;
+  }
+  
+  .wd-kanbas-ellipsis {
+    color: white;
+    font-size: 24px;
+  }
+  
+  .wd-kanbas-card-container {
+    max-width: 100%;
+  }
+  
+  .wd-kanbas-card {
+    width: 260px;
+    margin: 20px;
+    text-decoration: none;
+    color: black;
+  }
+  
+  .wd-breadcrumb-item.wd-active::before {
+    content: " > ";
+  }
+  
+  .wd-breadcrumb-item.wd-kanbas-breadcrumb::before {
+    content: " > ";
+  }
+  
+  .wd-kanbas-module-header-padding {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  
+  .wd-kanbas-module-padding {
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+  
+  .wd-kanbas-text-left {
+    text-align: left;
+  }
+  
+  .wd-kanbas-text-right {
+    text-align: left;
+  }
+  
+  .wd-kanbas-module-icon {
+    margin-left: -50px;
+  }
+  
+  .wd-kanbas-assignment-margin {
+    padding-top: -20px;
+  }
+  
+  .wd-kanbas-assignment-icon {
+    font-size: 20px;
+    position: relative;
+    right: 40px;
+    bottom: 4px;
+    margin-right: -27px;
+  }
+  
+  .wd-kanbas-assignment-total {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  
+  .wd-kanbas-assignment-border {
+    border-left-color: green !important;
+    border-left-width: 6px !important
+  }
+
+  .wd-kanbas-list-group-header{
+    height: 60px !important;
+  }
+  
+  .wd-kanbas-edit-section {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  
+  .wd-kanbas-width-40 {
+    width: 40%;
+  }
+  
+  .wd-kanbas-width-45 {
+    width: 48%;
+  }
+  
+  .wd-kanbas-width-50 {
+    width: 50%;
+  }
+  
+  .wd-kanbas-until {
+    position: relative;
+    left: 68px;
+  }
+  
+  .wd-kanbas-edit-grade {
+    padding: 0px;
+  }
+  
+  .wd-kanbas-edit-margin {
+    margin-right: -100px;
+  }
+  
+  .wd-kanbas-bottom-layer {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .wd-kanbas-top-layer {
+    position: relative;
+    z-index: 2;
+  }
+  .wd-kanbas-course-navigation {
+    margin-right : 40px !important;
+  }
+
+  .wd-kanbas-table-border {
+    border: #dee2e6;
+    border-style: solid;
+    border-width: 1px ;
+  }
+  .wd-kanbad-margin-right-left {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .wd-left-margin-20 {
+    margin-left: 20px !important;
+  }
+
+  .wd-left-margin-100 {
+    margin-left: 100px !important;
+  }
+
+  .wd-left-margin-10 {
+    margin-left: 10px !important;
+  }
+
+  .icon-front {
+    width: 48px;
+    height: 48px;
+  }
+
+  .wd-course-nav-header {
+    color: #676061;
+    font-size: 0.7em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 16px;
+  }
+
+  .floating-menu {
+    position: fixed;
+    z-index: 9999;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 5px 10px;
+  }
+  
+  .floating-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .floating-menu ul li {
+    padding: 5px 0;
+    cursor: pointer;
+  }
+  
+  .floating-menu ul li:hover {
+    background-color: #f0f0f0;
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
+
+
+  .full-length-text-box {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(247, 109, 109, 0.2);
+    color: rgb(171, 11, 11); 
+    border: none; 
+    outline: none; 
+    resize: none; 
+    border-radius: 5px;
+    margin-bottom: 12px;
+}
+  
+.grey-border {
+    border: 1px solid #afaeae;
+}
+
+.grey-border-bottom {
+    border-bottom: 1px solid #afaeae;
+}
+
+.transparent-grey-background {
+    background-color: rgba(136, 136, 136, 0.1);
+    padding-top: 8px;
+    padding-bottom: 3px;
+    padding-left: 22px;
+    padding-right: 18px;
+    
+}
+
+.question-box {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.question-box-margin {
+    margin-top: 29px;
+    margin-bottom: 29px;
+    margin-left: 42px;
+    margin-right: 42px;
+}
+
+.hr-margin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dark-grey-border {
+  border: 2px solid #555;
+}
+
+/* .container {
+  display: flex;
+  flex-wrap: wrap;
+} */
+
+.main-content {
+  flex-grow: 1;
+  margin-right: 20px; /* Adjust as needed */
+}
+
+.question-menu {
+  flex-basis: 100%;
+  margin-top: 20px; /* Adjust as needed */
+}
+
+/* .question-menu h3 {
+  color: red;
+} */
+
+.question-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.question-menu ul li {
+  margin-bottom: 0px;
+  padding-left: 25px;
+}
+
+/* Media query for smaller screens */
+@media only screen and (min-width: 768px) {
+  .question-menu {
+      flex-basis: 30%; /* Adjust as needed */
+      margin-top: 45px; /* Remove top margin */
+  }
+}
+
+.react-router-link {
+  text-decoration: none;
+}
+
+.selected-question {
+  font-weight: bold;
+}
