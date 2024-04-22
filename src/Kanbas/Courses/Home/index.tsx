@@ -1,5 +1,4 @@
 import ModuleList from "../Modules/List";
-// import Status from "./Status";
 import Status from "./Status";
 function Home() {
   return (
