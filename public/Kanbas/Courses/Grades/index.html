@@ -1,209 +1,123 @@
-<div class="wd-kanbas-column">
-    <h4>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="home.html" class="wd-kanbas-hyperlink">CS5610</a>
-          </li>
-          <li class="breadcrumb-item active">Grades</li>
-        </ol>
-      </nav>
-    </h4>
+<html>
+    <head>
+        <title>
+            Grades index
+        </title>
+    </head>
 
-    <hr />
+    <body>
+        <select>
+            <option>
+                Gradebook
+            </option>
+            <option>
+                Traditional Gradebook
+            </option>
+            <option>
+                XYZ
+            </option>
+        </select>
+        <button>
+            Import
+        </button>
+        <select>
+            <option>
+                Export
+            </option>
+            <option>
+                Export 1
+            </option>
+            <option>
+                Export 2
+            </option>
+        </select>
+        <button>
+            Configure
+        </button>
+        <h4>
+            Student Names
+        </h4>
+        <input placeholder="Search Students"/>
 
-    <a href="#">
-      <button type="submit" class="btn wd-kanbas-light-gray-bg float-end">
-        <i class="fa fa-gear mt-1"></i>
-      </button>
-    </a>
-    <a href="#">
-      <button type="submit" class="btn wd-kanbas-light-gray-bg float-end me-1">
-        <i class="fa fa-file-export mt-1 me-1"></i>
-        Export
-        <i class="fa fa-angle-down"></i>
-      </button>
-    </a>
-    <a href="#">
-      <button type="submit" class="btn wd-kanbas-light-gray-bg float-end me-1">
-        <i class="fa fa-file-import mt-1 me-1"></i>
-        Import
-      </button>
-    </a>
+        <h4>
+            Assignment Names
+        </h4>
+        <input placeholder="Search Assignments"/>
+        <br/>
+        <br/>
+        <button>Apply Filters</button>
+        <br/>
+        <br/>
 
-    <br />
-    <br />
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>
+                        Student Name
+                    </th>
+                    <th>A1 SETUP<br/>Out of 100</th>
+                    <th>A2 HTML<br/>Out of 100</th>
+                    <th>A3 CSS<br/>Out of 100</th>
+                    <th>A4 BOOTSTRAP<br/>Out of 100</th>
+                    <th>A5 JAVASCRIPT<br/>Out of 100</th>
+                    <th>A6 REACT<br/>Out of 100</th>
+                    <th>A7 REDUX<br/>Out of 100</th>
+                    <th>A8 NODE<br/>Out of 100</th>
+                    <th>A9 MONGO<br/>Out of 100</th>
+                </tr>
+            </thead>
 
-    <div class="container">
-      <div class="row mb-2">
-        <div class="col">
-          <b>Student Names</b>
-        </div>
-        <div class="col">
-          <b>Assignment Names</b>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <input class="form-control" placeholder="Search Students" />
-        </div>
-        <div class="col">
-          <input class="form-control" placeholder="Search Assignments" />
-        </div>
-      </div>
-    </div>
+            <tbody>
+                <tr>
+                    <td>Gaurav Tejwani</td>
+                    <td align="center">100</td>
+                    <td align="center"><input size="2" value="99"/></td>
+                    <td align="center">100</td>
+                    <td align="center">100</td>
+                    <td align="center">100</td>
+                    <td align="center">100</td>
+                    <td align="center">100</td>
+                    <td align="center"><input size="2" value="90"/></td>
+                    <td align="center">100</td>
+                </tr>
+                <tr>
+                    <td>XYZ</td>
+                    <td align="center">96</td>
+                    <td align="center">96</td>
+                    <td align="center">96</td>
+                    <td align="center">96</td>
+                    <td align="center">96</td>
+                    <td align="center"><input size="2" value="96"/></td>
+                    <td align="center">96</td>
+                    <td align="center">96</td>
+                    <td align="center">96</td>
+                </tr>
+                <tr>
+                    <td>ABC</td>
+                    <td align="center">98</td>
+                    <td align="center">98</td>
+                    <td align="center">98</td>
+                    <td align="center">98</td>
+                    <td align="center"><input size="2" value="98"/></td>
+                    <td align="center">98</td>
+                    <td align="center">98</td>
+                    <td align="center"><input size="2" value="98"/></td>
+                    <td align="center">98</td>
+                </tr>
+                <tr>
+                    <td>Hello World</td>
+                    <td align="center">99</td>
+                    <td align="center">99</td>
+                    <td align="center">99</td>
+                    <td align="center">99</td>
+                    <td align="center">99</td>
+                    <td align="center">99</td>
+                    <td align="center">99</td>
+                    <td align="center">99</td>
+                    <td align="center">99</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <a href="#">
-      <button type="submit" class="btn wd-kanbas-light-gray-bg float-start mt-2">
-        <i class="fa fa-filter mt-1 me-1"></i>
-        Apply Filters
-      </button>
-    </a>
-
-    <br />
-    <br />
-
-    <div class="table-responsive mt-2">
-      <table class="table table-striped border rounded">
-        <thead>
-          <tr>
-            <th>Student Name</th>
-            <th class="wd-kanbas-center-heading">A1 SETUP<br />(Out of 100)</th>
-            <th class="wd-kanbas-center-heading">A2 HTML<br />(Out of 100)</th>
-            <th class="wd-kanbas-center-heading">A3 CSS<br />(Out of 100)</th>
-            <th class="wd-kanbas-center-heading">
-              A4 BOOTSTRAP<br />(Out of 100)
-            </th>
-            <th class="wd-kanbas-center-heading">
-              A5 JAVASCRIPT<br />(Out of 100)
-            </th>
-            <th class="wd-kanbas-center-heading">A6 REACT<br />(Out of 100)</th>
-            <th class="wd-kanbas-center-heading">A7 REDUX<br />(Out of 100)</th>
-            <th class="wd-kanbas-center-heading">A8 NODE<br />(Out of 100)</th>
-            <th class="wd-kanbas-center-heading">A9 MONGO<br />(Out of 100)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <a href="#" class="wd-kanbas-hyperlink">James Smith</a>
-            </td>
-            <td class="wd-kanbas-center-heading">98%</td>
-            <td class="wd-kanbas-center-heading">80%</td>
-            <td class="wd-kanbas-center-heading">87%</td>
-            <td class="wd-kanbas-center-heading">86%</td>
-            <td class="wd-kanbas-center-heading">100%</td>
-            <td class="wd-kanbas-center-heading">94%</td>
-            <td class="wd-kanbas-center-heading">85%</td>
-            <td class="wd-kanbas-center-heading">84%</td>
-            <td class="wd-kanbas-center-heading">92%</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#" class="wd-kanbas-hyperlink">Elizabeth Jones</a>
-            </td>
-            <td class="wd-kanbas-center-heading">83%</td>
-            <td class="wd-kanbas-center-heading">99%</td>
-            <td class="wd-kanbas-center-heading">94%</td>
-            <td class="wd-kanbas-center-heading">98%</td>
-            <td class="wd-kanbas-center-heading">86%</td>
-            <td class="wd-kanbas-center-heading">85%</td>
-            <td class="wd-kanbas-center-heading">86%</td>
-            <td class="wd-kanbas-center-heading">80%</td>
-            <td class="wd-kanbas-center-heading">84%</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#" class="wd-kanbas-hyperlink">Manny de la Cruz</a>
-            </td>
-            <td class="wd-kanbas-center-heading">85%</td>
-            <td class="wd-kanbas-center-heading">89%</td>
-            <td class="wd-kanbas-center-heading">94%</td>
-            <td class="wd-kanbas-center-heading">83%</td>
-            <td class="wd-kanbas-center-heading">83%</td>
-            <td class="wd-kanbas-center-heading">84%</td>
-            <td class="wd-kanbas-center-heading">91%</td>
-            <td class="wd-kanbas-center-heading">87%</td>
-            <td class="wd-kanbas-center-heading">96%</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#" class="wd-kanbas-hyperlink">Ryu Tanaka</a>
-            </td>
-            <td class="wd-kanbas-center-heading">81%</td>
-            <td class="wd-kanbas-center-heading">92%</td>
-            <td class="wd-kanbas-center-heading">82%</td>
-            <td class="wd-kanbas-center-heading">86%</td>
-            <td class="wd-kanbas-center-heading">83%</td>
-            <td class="wd-kanbas-center-heading">84%</td>
-            <td class="wd-kanbas-center-heading">98%</td>
-            <td class="wd-kanbas-center-heading">85%</td>
-            <td class="wd-kanbas-center-heading">96%</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#" class="wd-kanbas-hyperlink">Emma Davis</a>
-            </td>
-            <td class="wd-kanbas-center-heading">85%</td>
-            <td class="wd-kanbas-center-heading">88%</td>
-            <td class="wd-kanbas-center-heading">92%</td>
-            <td class="wd-kanbas-center-heading">78%</td>
-            <td class="wd-kanbas-center-heading">86%</td>
-            <td class="wd-kanbas-center-heading">90%</td>
-            <td class="wd-kanbas-center-heading">79%</td>
-            <td class="wd-kanbas-center-heading">88%</td>
-            <td class="wd-kanbas-center-heading">85%</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#" class="wd-kanbas-hyperlink">Michael Johnson</a>
-            </td>
-            <td class="wd-kanbas-center-heading">89%</td>
-            <td class="wd-kanbas-center-heading">78%</td>
-            <td class="wd-kanbas-center-heading">85%</td>
-            <td class="wd-kanbas-center-heading">91%</td>
-            <td class="wd-kanbas-center-heading">
-              <div class="wd-kanbas-center-heading wd-kanbas-edit-margin">
-                <input
-                  class="form-control wd-kanbas-center-heading wd-kanbas-edit-grade w-50 float-start"
-                  value="87%"
-                />
-                <i class="fa fa-pen-to-square float-start mt-1 ms-1"></i>
-              </div>
-            </td>
-            <td class="wd-kanbas-center-heading">89%</td>
-            <td class="wd-kanbas-center-heading">80%</td>
-            <td class="wd-kanbas-center-heading">76%</td>
-            <td class="wd-kanbas-center-heading">83%</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#" class="wd-kanbas-hyperlink">Sarah Lee</a>
-            </td>
-            <td class="wd-kanbas-center-heading">94%</td>
-            <td class="wd-kanbas-center-heading">83%</td>
-            <td class="wd-kanbas-center-heading">79%</td>
-            <td class="wd-kanbas-center-heading">88%</td>
-            <td class="wd-kanbas-center-heading">85%</td>
-            <td class="wd-kanbas-center-heading">91%</td>
-            <td class="wd-kanbas-center-heading">89%</td>
-            <td class="wd-kanbas-center-heading">78%</td>
-            <td class="wd-kanbas-center-heading">85%</td>
-          </tr>
-          <tr>
-            <td>
-              <a href="#" class="wd-kanbas-hyperlink">David Miller</a>
-            </td>
-            <td class="wd-kanbas-center-heading">88%</td>
-            <td class="wd-kanbas-center-heading">91%</td>
-            <td class="wd-kanbas-center-heading">86%</td>
-            <td class="wd-kanbas-center-heading">90%</td>
-            <td class="wd-kanbas-center-heading">82%</td>
-            <td class="wd-kanbas-center-heading">85%</td>
-            <td class="wd-kanbas-center-heading">87%</td>
-            <td class="wd-kanbas-center-heading">92%</td>
-            <td class="wd-kanbas-center-heading">79%</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    </body>
+</html>

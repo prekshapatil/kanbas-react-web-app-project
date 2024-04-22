@@ -15,7 +15,8 @@ function DateStateVariable() {
         className="form-control"
         type="date"
         value={dateObjectToHtmlDateString(startDate)}
-        onChange={(e) => setStartDate(new Date(e.target.value))}/>
+        onChange={(e) => setStartDate(new Date(e.target.value))}
+      />
     </div>
   );
 }

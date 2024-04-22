@@ -1,0 +1,16 @@
+.wd-kanbas-navigation-new{
+    margin-left: 20px;
+    list-style: none;
+    margin-top: 30px;
+}
+
+.wd-kanbas-navigation-new > li{
+    text-decoration: none;
+    margin: 10px;
+    font-size: 1.5em
+}
+
+.wd-kanbas-navigation-new >li>a{
+    color: red;
+    text-decoration: none;
+}

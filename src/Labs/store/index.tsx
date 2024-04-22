@@ -7,11 +7,13 @@ export type TodoType = {
   id: string;
   title: string;
 };
+
+
 export interface LabState {
   helloReducer: {
     message: string;
   };
-  counterReducer: {
+  counterReducer:{
     count: number;
   };
   addReducer: {
@@ -21,6 +23,8 @@ export interface LabState {
     todos: TodoType[];
     todo: TodoType;
   };
+
+
 }
 const store = configureStore({
   reducer: {

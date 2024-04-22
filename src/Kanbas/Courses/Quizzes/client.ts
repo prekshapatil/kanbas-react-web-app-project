@@ -1,14 +1,18 @@
 import axios from "axios";
 
-const COURSES_API = "https://kanbas-server-app-project.onrender.com/api/courses";
-const QUIZZES_API = "https://kanbas-server-app-project.onrender.com/api/quizzes";
+const API_BASE = process.env.REACT_APP_API_BASE
+const COURSES_API = `${API_BASE}/api/courses`;
+const QUIZZES_API = `${API_BASE}/api/quizzes`;
 
-export const deleteQuiz = async (quizId:any) => {
-  const response = await axios.delete(`${QUIZZES_API}/${quizId}`);
+export const findQuizForCourse = async (courseId: string | undefined) => {
+  const response = await axios.get(`${COURSES_API}/${courseId}/quizzes`);
   return response.data;
 };
 
-export const createQuiz = async (courseId:any, quiz:any) => {
+export const createQuiz = async (
+  courseId: string | undefined,
+  quiz: string
+) => {
   const response = await axios.post(
     `${COURSES_API}/${courseId}/quizzes`,
     quiz
@@ -16,17 +20,20 @@ export const createQuiz = async (courseId:any, quiz:any) => {
   return response.data;
 };
 
-export const findQuizzesForCourse = async (courseId:any) => {
-  const response = await axios.get(`${COURSES_API}/${courseId}/quizzes`);
+export const updateQuiz = async (quiz: any) => {
+  const response = await axios.put(
+    `${QUIZZES_API}/${quiz._id}`,
+    quiz
+  );
   return response.data;
 };
 
-export const updateQuiz = async (quiz:any) => {
-  const response = await axios.put(`${QUIZZES_API}/${quiz._id}`, quiz);
+export const deleteQuiz = async (quizId: string) => {
+  const response = await axios.delete(`${QUIZZES_API}/${quizId}`);
   return response.data;
 };
 
-export const findQuizById = async (quizId:any) => {
+export const findQuizById = async (quizId: string | undefined) => {
   const response = await axios.get(`${QUIZZES_API}/${quizId}`);
   return response.data;
 };

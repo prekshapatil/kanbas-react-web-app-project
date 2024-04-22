@@ -1,182 +1,269 @@
 <html>
   <head>
-    <link rel="stylesheet" href="../../../libs/bootstrap.min.css" />
-    <link rel="stylesheet" href="../../../libs/font-awesome/css/font-awesome.css" />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="/Kanbas/Courses/Modules/index.css" />
+    <link rel="stylesheet" href="/Kanbas/styles.css" />
+    <script
+        src="https://kit.fontawesome.com/32d47a68e6.js"
+        crossorigin="anonymous"
+      ></script>
   </head>
   <body>
-    <!-- Implement buttons Collapse All, View Progress, etc. here -->
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="button" class="btn btn-light">Collapse All</button>
-        <button type="button" class="btn btn-light">View Progress</button>
-        <button type="button" class="btn btn-light"><i class="fa fa-check" aria-hidden="true" style="color : green; margin-right: 3px;"></i>Publish All</button>
-        <button type="button" class="btn btn-Danger"><i class="fa fa-plus" aria-hidden="true" style="margin-right: 3px;"></i>Module</button>
-        <button type="button" class="btn btn-light"><i class="fa fa-ellipsis-v ms-2"></i></button>
-    </div>
+
     <ul class="list-group wd-modules">
-        <li class="list-group-item">
-          <div>
-            <i class="fa fa-ellipsis-v"></i> Week 0 - INTRO
+      <li class="list-group-item">
+        <div>
+          <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> Week 1
+          <span class="float-end">
+            <i class="fa fa-check-circle text-success"></i>
+            <i class="fa fa-plus ms-2"></i>
+            <i class="fa fa-ellipsis-v ms-2"></i>
+          </span>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> Learning Objectives
             <span class="float-end">
               <i class="fa fa-check-circle text-success"></i>
-              <i class="fa fa-plus ms-2"></i>
               <i class="fa fa-ellipsis-v ms-2"></i>
             </span>
-          </div>
-          <ul class="list-group">
-            <li class="list-group-item">
-              <i class="fa fa-ellipsis-v"></i> LEARNING OBJECTIVES
-              <span class="float-end">
-                <i class="fa fa-check-circle text-success"></i>
-                <i class="fa fa-ellipsis-v ms-2"></i>
-              </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span>Introduction to the course</span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span>Learn what is Web Development</span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span>Creating a development environment</span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span>Creating a Web Application</span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span>Getting Started with 1st Assignment</span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-            <li class="list-group-item">
-              <i class="fa fa-ellipsis-v"></i> READING
-              <span class="float-end">
-                <i class="fa fa-check-circle text-success"></i>
-                <i class="fa fa-ellipsis-v ms-2"></i>
-              </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span>Full Stack Developer - chapter 1 - Introduction</span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span>Full Stack Developer - chapter 1 - Creating User Interfaces With HTML</span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-            <li class="list-group-item">
-              <i class="fa fa-ellipsis-v"></i> SLIDES
-              <span class="float-end">
-                <i class="fa fa-check-circle text-success"></i>
-                <i class="fa fa-ellipsis-v ms-2"></i>
-              </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span><a href="#">Introduction to Web Development Links to an external site.</a></span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span><a href="#">Creating HTTP server with Node.js Links to an external site.</a></span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span><a href="#">Creating React Application Links to an external site.</a></span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-          </ul>
-        </li>
-        <li class="list-group-item">
-          <div>
-            <i class="fa fa-ellipsis-v"></i> Week 1 - HTML
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> <span style="margin-left: 30px;">Introduction to the course</span> 
             <span class="float-end">
               <i class="fa fa-check-circle text-success"></i>
-              <i class="fa fa-plus ms-2"></i>
               <i class="fa fa-ellipsis-v ms-2"></i>
             </span>
-          </div>
-          <ul class="list-group">
-            <li class="list-group-item">
-              <i class="fa fa-ellipsis-v"></i> LEARNING OBJECTIVES
-              <span class="float-end">
-                <i class="fa fa-check-circle text-success"></i>
-                <i class="fa fa-ellipsis-v ms-2"></i>
-              </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span>Learn how to create user Interfaces with HTML</span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span>Keep working on assignment 1</span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span>Deploy the assignement to Netlify</span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-            <li class="list-group-item">
-              <i class="fa fa-ellipsis-v"></i> READING
-              <span class="float-end">
-                <i class="fa fa-check-circle text-success"></i>
-                <i class="fa fa-ellipsis-v ms-2"></i>
-              </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span>Full Stack Developer - chapter 1 - Introduction</span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-            <li class="list-group-item">
-                <i class="fa fa-ellipsis-v"></i> <span>Full Stack Developer - chapter 1 - Creating User Interfaces With HTML</span>
-                <span class="float-end">
-                  <i class="fa fa-check-circle text-success"></i>
-                  <i class="fa fa-ellipsis-v ms-2"></i>
-                </span>
-            </li>
-          </ul>
-        </li>
-      </ul>      
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> <span style="margin-left: 30px;"> Creating a development environment </span>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> <span style="margin-left: 30px;"> Creating a development environment</span>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> <span style="margin-left: 30px;">Creating a Web Application</span>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> <span style="margin-left: 30px;">Getting started with the 1st assignment</span>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> <span style="margin-left: 30px;">Getting started with the 1st assignment</span>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> READING
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> <span style="margin-left: 30px;"> Full stack Developer - Chapter 1 - Introduction</span> 
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i>  <span style="margin-left: 30px;">Full stack Developer - Chapter 2 - Creating User Interfaces With HTML </span>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i>  SLIDES
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> 
+            <i class="fa-solid fa-link" style="font-size:0.8em; color:green"></i>
+            <a href="#">Intrduction to Web Development Links to an external site.</a>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i>  
+            <i class="fa-solid fa-link" style="font-size:0.8em; color:green"></i>
+            <a href="#">Creating an HTTP server with Node.js Links to an external site.</a>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i>  
+            <i class="fa-solid fa-link" style="font-size:0.8em; color:green"></i>
+            <a href="#">Creating a React Application Links to an external site.</a>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+        </ul>
+      </li>
+      <li class="list-group-item">
+        <div>
+          <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> Week 2
+          <span class="float-end">
+            <i class="fa fa-check-circle text-success"></i>
+            <i class="fa fa-plus ms-2"></i>
+            <i class="fa fa-ellipsis-v ms-2"></i>
+          </span>
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> Learning Objectives
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> <span style="margin-left: 30px;">Introduction to the course</span> 
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> <span style="margin-left: 30px;"> Creating a development environment </span>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> <span style="margin-left: 30px;"> Creating a development environment</span>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> <span style="margin-left: 30px;">Creating a Web Application</span>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> <span style="margin-left: 30px;">Getting started with the 1st assignment</span>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> <span style="margin-left: 30px;">Getting started with the 1st assignment</span>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> READING
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> <span style="margin-left: 30px;"> Full stack Developer - Chapter 1 - Introduction</span> 
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i>  <span style="margin-left: 30px;">Full stack Developer - Chapter 2 - Creating User Interfaces With HTML </span>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i>  SLIDES
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i> 
+            <i class="fa-solid fa-link" style="font-size:0.8em; color:green"></i>
+            <a href="#">Intrduction to Web Development Links to an external site.</a>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i>  
+            <i class="fa-solid fa-link" style="font-size:0.8em; color:green"></i>
+            <a href="#">Creating an HTTP server with Node.js Links to an external site.</a>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+          <li class="list-group-item">
+            <i class="fa-solid fa-grip-vertical" style="font-size: 0.8em; color: grey"></i>  
+            <i class="fa-solid fa-link" style="font-size:0.8em; color:green"></i>
+            <a href="#">Creating a React Application Links to an external site.</a>
+            <span class="float-end">
+              <i class="fa fa-check-circle text-success"></i>
+              <i class="fa fa-ellipsis-v ms-2"></i>
+            </span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </body>
 </html>

@@ -1,150 +1,192 @@
+import React from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { assignments } from "../../../Database";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addAssignment,
+  setAssignment,
+  clearAssignment,
+  updateAssignment,
+} from "../reducer";
 import { KanbasState } from "../../../store";
-import * as client from "../client";
-import { setAssignment, addAssignment, updateAssignment } from "../assignmentReducer";
+import * as service from "../service";
+
 function AssignmentEditor() {
-  const assignment = useSelector((state: KanbasState) => 
-  state.assignmentsReducer.assignment);
-  const dispatch = useDispatch();
   const { assignmentId } = useParams();
+  //   const assignment = assignments.find(
+  //     (assignment) => assignment._id === assignmentId
+  //   );
+  const isAddNew = assignmentId === "AssignmentEditor";
+
   const { courseId } = useParams();
   const navigate = useNavigate();
-
-  const handleAddAssignment = () => {
-    client.createAssignment(courseId, assignment).then((ass) => {
-      dispatch(addAssignment(ass));
-    });
-  };
-
-  const handleUpdateAssignment = async () => {
-    const status = await client.updateAssignment(assignment);
-    dispatch(updateAssignment(assignment));
-  };
-
+  const assignment = useSelector(
+    (state: KanbasState) => state.assignmentReducer.assignment
+  );
   const handleSave = () => {
-    if (assignmentId === "new") {
-      handleAddAssignment();
+    console.log("Actually saving assignment TBD in later assignments");
+    if (isAddNew) {
+      handleAddingNew();
     } else {
-      handleUpdateAssignment();
+      handleUpdate();
     }
     navigate(`/Kanbas/Courses/${courseId}/Assignments`);
   };
-  const aFrom = assignment.availableFromDate;
-  const aUntil = assignment.availableUntilDate;
+
+  const dispatch = useDispatch();
+
+  const handleAddingNew = () => {
+    service
+      .createAssignment(courseId, assignment)
+      .then((a) => dispatch(addAssignment(a)));
+  };
+
+  const handleUpdate = async () => {
+    const res = await service.updateAssignment(assignment);
+    dispatch(updateAssignment(assignment));
+  };
+
   return (
-    <div className="me-5">
-    <div className="wd-kanbas-green float-end mt-2 ">
-    <i className="fa fa-check-circle wd-kanbas-green" aria-hidden="true"></i>
-        Published
-        <button type="button" className="btn btn-light"><i className="fa fa-ellipsis-v ms-2"></i></button>
-    </div>
-    <br />
-    <br />
-    <hr />
-    <label htmlFor="input-1" className="form-label"> Assignment Name </label>
-      <input value={assignment?.title}
-             className="form-control mb-2"  onChange={(e) => dispatch(setAssignment({...assignment,title: e.target.value}))}/>
-    <br />
-    <textarea value={assignment.description} className="form-control" onChange={(e) => dispatch(setAssignment({...assignment, description:e.target.value}))}></textarea>
-    <br />
-    <div className="container">
-        <div className="row">
-        <div className="col-2">
-            <div className="float-end">Points</div>
+    <div>
+      <h2>Assignment Name</h2>
+      <input
+        value={assignment?.title}
+        className="form-control mb-2"
+        onChange={(e) => {
+          dispatch(setAssignment({ ...assignment, title: e.target.value }));
+        }}
+      />
+      <textarea
+        value={assignment.description}
+        className="form-control mb-2"
+        onChange={(e) => {
+          dispatch(
+            setAssignment({ ...assignment, description: e.target.value })
+          );
+        }}
+      />
+      <br />
+      <div className="row g-0 text-end" style={{ paddingBottom: "15px" }}>
+        <div
+          className="col-6 col-md-4"
+          style={{ paddingTop: "5px", paddingRight: "15px" }}
+        >
+          Points
         </div>
-        <div className="col-8">
-            <input className="form-control" id="input-2" value={assignment.points} onChange={(e) =>
-                dispatch(setAssignment({ ...assignment, points: e.target.value }))
-              }/>
+        <div className="col-sm-6 col-md-8 w-50">
+          <input
+            className="form-control"
+            type="number"
+            placeholder="Points"
+            aria-label="default input example"
+            value={assignment?.points}
+            onChange={(e) =>
+              dispatch(setAssignment({ ...assignment, points: e.target.value }))
+            }
+          />
         </div>
-        <div className="col-2"></div>
+      </div>
+      <div className="row g-0 text-end">
+        <div
+          className="col-6 col-md-4"
+          style={{ paddingTop: "5px", paddingRight: "15px" }}
+        >
+          Assign
         </div>
-        <br />
-        <br />     
-                          <div className="row">
-                            <div className="col-2">
-                              <div className="float-end">Assign</div>
-                            </div>
-                            <div className="col-8">
-                              <ul className="list-group list-group-item wd-kanbas-edit-section">
-                                <li className="list-group-item border-0">
-                                  <b>Due</b>
-                                </li>
-                  
-                                <li className="list-group-item border-0">
-                                  <input
-                                    type="date"
-                                    className="form-control"
-                                    id="input-4"
-                                    value={assignment.dueDate}
-                                    onChange={(e) =>
-                                      dispatch(setAssignment({ ...assignment, dueDate: e.target.value }))
-                                    }
-                                  />
-                                </li>
-                                <li className="list-group-item border-0">
-                                    <div className="row">
-                                        <div className="col-6 float-start">
-                                            <b className="wd-kanbas-width-45">Available from</b>
-                                        </div>
-                                        <div className="col-6 wd-float-start">
-                                            <b className="wd-kanbas-width-45">Until</b>
-                                        </div>
-                                    </div>
-                                </li>
-        
-                                <li className="list-group-item border-0">
-                                    <div className="row">
-                                        <div className="col-6 float-start">
-                                            <input
-                                            type="date"
-                                            className="form-control float-start wd-kanbas-width-45 me-1"
-                                            id="input-5"
-                                            value={aFrom}
-                                            onChange={(e) =>
-                                              dispatch(
-                                                setAssignment({ ...assignment, availableFromDate: e.target.value })
-                                              )
-                                            }
-                                          />
-                                        </div>
-                                        <div className="col-6 float-start">
-                                            <input
-                                                type="date"
-                                                className="form-control float-start wd-kanbas-width-45 ms-1"
-                                                id="input-6"
-                                                value={aUntil}
-                                                onChange={(e) =>
-                                                  dispatch(
-                                                    setAssignment({ ...assignment, availableUntilDate: e.target.value })
-                                                  )
-                                                }
-                                            />
-                                        </div>
-                                    </div>
-                                </li>
-                              </ul>
-                            </div>
-                            <div className="col-2"></div>
-                          </div>
-                        </div>
-                  
-                        <hr />
-                  
-                        <div className="float-start">
-                          <input className="form-check-input" type="checkbox" id="check-9" />
-                          <label className="form-check-label" htmlFor="check-9"
-                            >Notify users that this content has changed</label>
-                        </div>
+        <div className="col-sm-6 col-md-8 w-50" style={{ textAlign: "start" }}>
+          <div
+            className="wd-group"
+            style={{
+              border: "0.5px solid black",
+              borderRadius: "1%",
+              padding: "10px",
+            }}
+          >
+            <b>Assign to</b>
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Choose"
+              value="Everyone"
+              aria-label="default input example"
+            />
+            <br />
+            <b>Due</b>
+            <input
+              className="form-control"
+              type="datetime-local"
+              value={assignment?.dueDateTime}
+              onChange={(e) => {
+                dispatch(
+                  setAssignment({ ...assignment, dueDateTime: e.target.value })
+                );
+              }}
+            />
+
+            <br />
+            <div
+              className="wd-flex-row-container"
+              style={{
+                width: "-webkit-fill-available",
+                justifyContent: "space-around",
+              }}
+            >
+              <div className="row">
+                <div className="col">
+                  <b>Available from </b>
+                </div>
+                <div className="col">
+                  <b>Until </b>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="col">
+                  <input
+                    className="form-control w-75"
+                    type="datetime-local"
+                    value={assignment?.availableFromDate}
+                    onChange={(e) =>
+                      dispatch(
+                        setAssignment({
+                          ...assignment,
+                          availableFromDate: e.target.value,
+                        })
+                      )
+                    }
+                  />
+                </div>
+                <div className="col">
+                  <input
+                    className="form-control w-75"
+                    type="datetime-local"
+                    value={assignment?.availableUntilDate}
+                    onChange={(e) =>
+                      dispatch(
+                        setAssignment({
+                          ...assignment,
+                          availableUntilDate: e.target.value,
+                        })
+                      )
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <button onClick={handleSave} className="btn btn-success ms-2 float-end">
         Save
       </button>
-      <Link to={`/Kanbas/Courses/${courseId}/Assignments`}
-            className="btn btn-danger float-end">
+      <Link
+        onClick={(e) => dispatch(clearAssignment())}
+        to={`/Kanbas/Courses/${courseId}/Assignments`}
+        className="btn btn-danger float-end"
+      >
         Cancel
       </Link>
     </div>
-
-  )};
+  );
+}
 export default AssignmentEditor;

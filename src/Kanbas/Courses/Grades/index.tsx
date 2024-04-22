@@ -1,88 +1,86 @@
+import { FaCaretLeft, FaCaretSquareDown, FaCaretSquareLeft, FaCaretSquareRight, FaCog, FaFilter } from "react-icons/fa";
 import { assignments, enrollments, grades, users } from "../../Database";
-import { useParams } from "react-router-dom";
-import GradesEntry from "./gradesEntry";
+import { Link, useParams } from "react-router-dom";
+
 function Grades() {
   const { courseId } = useParams();
-  const as = assignments.find((type) => type.type === "Assignments")?.value.filter((assignment) => assignment.course === courseId);
+  const as = assignments.filter((assignment) => assignment.course === courseId);
   const es = enrollments.filter((enrollment) => enrollment.course === courseId);
+
   return (
-    <div className="wd-kanbas-column-right-margin me-5">
-        <a href="#">
-            <button type="submit" className="btn btn-light float-end">
-            <i className="fa fa-gear mt-1"></i>
-            </button>
-        </a>
-        <a href="#">
-            <button type="submit" className="btn btn-light float-end me-1">
-            <i className="fa fa-cloud-download" aria-hidden="true"></i>
-            <span className="wd-left-margin-10">Export</span>
-            <i className="fa fa-angle-down"></i>
-            </button>
-        </a>
-        <a href="#">
-            <button type="submit" className="btn btn-light float-end me-1">
-            <i className="fa fa-cloud-upload" aria-hidden="true"></i>
-            <span className="wd-left-margin-10">Import</span>
-            </button>
-        </a>
-        <a href="#" className=" float-start wd-kanbas-hyperlink">
-            <h4>             <span className="wd-left-margin-10">Gradebook</span>
-            <i className="fa fa-sort-desc ms-3" aria-hidden="true"></i></h4>
-        </a>
-        <br />
-        <br />
+    <div className="col">
+      <div className="row">
+        <div className="float-end me-5">
+          <div className="wd-button float-end">
+            <Link to={"#"} className="btn btn-secondary btn-sm" role="button" style={{"backgroundColor":"lightgray"}}>
+              <FaCog />
+            </Link>
+          </div>
 
-        <div>
-            <div className="row mb-2">
-            <div className="col-6 float-start wd-kanbad-margin-right-left">
-                <b>Student Names</b>
-            </div>
-            <div className="col-6 float-start wd-kanbad-margin-right-left">
-                <b>Assignment Names</b>
-            </div>
-            </div>
-            <div className="row">
-            <div className="col">
-                <input className="form-control" placeholder="Search Students" />
-            </div>
-            <div className="col">
-                <input className="form-control" placeholder="Search Assignments" />
-            </div>
-            </div>
+          <div className="wd-button float-end">
+          <Link to={"#"}  className="btn btn-secondary btn-sm" role="button" style={{"backgroundColor":"lightgray"}}>
+              <FaCaretSquareLeft className="me-1" />
+              Export</Link>
+          </div>
+
+          <div className="wd-button float-end">
+          <Link to={"#"}  className="btn btn-secondary btn-sm"  role="button" style={{"backgroundColor":"lightgray"}}>
+              <FaCaretSquareRight className="me-1" />
+              Import</Link>
+          </div>
         </div>
-    
-        <a href="#">
-            <button type="submit" className="btn btn-light float-start mt-2">
-            <i className="fa fa-filter mt-1 me-1"></i>
-            Apply Filters
-            </button>
-        </a>
-    
-        <br />
-        <br />
-      <div className="table-responsive mt-2">
-        <table className="table table-striped border rounded">
+      </div>
+
+      <div className="row mt-1">
+        <div className="col">
+          <label className="fw-bold" style={{ width: "100%" }}>
+            Student Names
+            <input className="form-control mt-2" id="studname" placeholder="Search Students" />
+          </label>
+        </div>
+        <div className="col">
+          <label className="fw-bold" style={{ width: "100%" }}>
+            Assignment Names
+            <input className="form-control mt-2" id="assignname" placeholder="Search Assignments" />
+          </label>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="float-end mt-3">
+          <a className="btn btn-secondary btn-sm"  role="button" style={{"backgroundColor":"lightgray"}}>
+            <FaFilter className="me-1" />
+            Apply Filter</a>
+        </div>
+      </div>
+
+      <div className="row mt-4 ms-2 me-4 pe-5">
+        <table className="table table-striped table-responsive table-bordered">
           <thead>
-            <th className="wd-kanbas-center-heading wd-kanbas-table-border">Student Name</th>
-            {as!.map((assignment) => (<th className="wd-kanbas-center-heading wd-kanbas-table-border">{assignment.title} <br />(Out of 100)</th>))}
+            <tr>
+              <th>Student Name</th>
+              {as.map((assignment) => (<th>{assignment.title}</th>))}
+            </tr>
           </thead>
-
-
           <tbody>
             {es.map((enrollment) => {
-              const user = users.find((user) => user._id === enrollment.user);
+              const user = users.find((user) => user._id === enrollment.user)
               return (
                 <tr>
-                   <td> <a href="#" className="wd-kanbas-hyperlink"> {user?.firstName} {user?.lastName} </a></td>
-                   {as!.map((assignment, index) => {
-                     const grade = grades.find(
-                       (grade) => grade.student === enrollment.user && grade.assignment === assignment._id);
-                       return (grade?.student === "126" && index === 1?<GradesEntry gradeValue={grade?.grade!} /> :  <td className="wd-kanbas-center-heading wd-kanbas-table-border">{grade?.grade + "%" || ""}</td>);
-                       })}
-                </tr>);
+                  <th scope="row" style={{ color: "red" }}>{user?.firstName} {user?.lastName}</th>
+                  {as.map((assignment) => {
+                    const grade = grades.find((grade) =>
+                      grade.student === enrollment.user && grade.assignment === assignment._id)
+                    return (
+                      <td>{grade?.grade || ""}</td>
+                    );
+                  })}
+                </tr>
+              )
             })}
-          </tbody></table>
-      </div></div>);
+          </tbody>
+        </table>
+      </div>
+    </div>);
 }
 export default Grades;
-

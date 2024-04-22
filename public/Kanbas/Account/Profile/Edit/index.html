@@ -1,63 +1,75 @@
-<label> Name:*</label>
-<input type="text" value="Jose Annunziato">
-<label>Pronouns:</label>
-<select>
-    <option>None</option>
-    <option>He/Him</option>
-    <option>She/Her</option>
-    <option>They/Them</option>
-</select>
-<br>
-<br>
-<label>Title:</label>
-<input type="text">
-<h3>Contact</h3>
-Not registered services, you can add some on the <a href="#">settings</a> page.
-<h3>Biography</h3>
-Student, Software Engineer, AI, Data, and philanthrophic volunteer.
-<br>
-<textarea name="" id="" cols="47" rows="3"></textarea>
-<h3>Links</h3>
-<ul>
-    <li>
-        <a href="#">YouTube Links to external site</a>
-    </li>
-</ul>
-<table>
-    <tbody>
-        <tr>
-            <td align="center">
-                <label for="title-link">Title</label>
-            </td>
-            <td align="center">
-                <label for="url-link">URL</label>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input id="title-link" type="text" value="Youtube" placeholder="Enter title">
-                →
-            </td>
-            <td>
-                <input id="url-link" type="text" value="https://www.youtube.com" placeholder="Enter URL">
-            </td>
-            <td align="right">
-                <a href="#">Remove</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<button>Add Another link</button>
-<br>
-<form action="/Kanbas/Account/Profile/screen.html" style="display: inline">
-    <button>Cancel</button>
-</form>
-<form action="/Kanbas/Account/Profile/screen.html" style="display: inline">
-    <button>Save Profile</button>
-  </form>
-  <br>
-  <button>Edit Profile</button>
-<form action="/Kanbas/Account/Profile/screen.html" style="display: inline">
-    <button>Cancel Editing</button>
-  </form>
+<html>
+    <head>
+        <title>
+            Profile index.
+        </title>
+    </head>
+    <body>
+        <h4>
+            Jose Annunziato
+        </h4>
+        <label>Name:*</label>
+        <input value="Jose Annunziato"/>
+        <label>Pronouns</label>
+        <select>
+            <option selected>
+                None
+            </option>
+            <option>
+                He/Him
+            </option>
+            <option>
+                She/Her
+            </option>
+            <option>
+                They/Their
+            </option>
+        </select>
+        <br/>
+        <br/>
+        <label>Title:</label>
+        <input />
+        <h4>
+            Contact
+        </h4>
+        No registered services, you can add some on the <a href="#">settings</a> page.
+        <h4>
+            Biography
+        </h4>
+    
+        <br/>
+        <textarea cols="50" rows="4">Faculty, Software Engineer, AI, Space and renewables enthusiast.</textarea>
+        <br/>
+        <h3>Links</h3>
+        <ul>
+            <li>
+                <a href="https://www.youtube.com">Youtube Links to an external site.</a>
+            </li>
+        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th></th>
+                    <th>URL</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tr>
+                <td><input value="YouTube"/></td>
+                <td>&#x2192</td>
+                <td><input value="https://www.youtube.com/"/></td>
+                <td><a href="#">Remove</a></td>
+                </tr>
+                </tbody>
+        </table>
+        <button>Add another link</button>
+        <br/>
+        <button>Cancel</button>
+        <a href="/Kanbas/Account/Profile/screen.html"><button>Save Profile</button></a>
+        <br/>
+        <a href="/Kanbas/Account/Profile/Edit/screen.html"><button>Edit Profile</button></a>
+        <a href="/Kanbas/Account/Profile/screen.html"><button>Cancel Editing</button></a>
 
+    </body>
+</html>

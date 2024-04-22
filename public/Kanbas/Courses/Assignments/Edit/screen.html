@@ -1,0 +1,558 @@
+<html>
+  <head>
+    <title>Course Screen.</title>
+    <link rel="stylesheet" href="/Kanbas/styles.css" />
+    <link rel="stylesheet" href="/Kanbas/Navigation/index.css" />
+    <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/Kanbas/styles.css" />
+    <link rel="stylesheet" href="/Kanbas/Courses/Navigation/index.css" />
+    <link rel="stylesheet" href="/Kanbas/Courses/Assignments/index.css" />
+    <link rel="stylesheet" href="/Kanbas/Courses/Modules/index.css"/>
+    <script
+      src="https://kit.fontawesome.com/32d47a68e6.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="d-flex gap-3">
+      <div class="d-none d-md-block" style="background-color: black">
+        <ul class="wd-kanbas-navigation">
+          <li>
+            <a href="http://northeastern.edu"
+              ><br />N</a
+            >
+          </li>
+          <li>
+            <a href="/Kanbas/Account/Profile/screen.html">
+              <i class="fa-solid fa-circle-user wd-account"></i><br />Account</a
+            >
+          </li>
+          <li>
+            <a href="/Kanbas/Dashboard/screen.html"
+              ><i class="fa fa-tachometer"></i><br />Dashboard</a
+            >
+          </li>
+          <li class="wd-active">
+            <a href="/Kanbas/Courses/Home/screen.html"
+              ><i class="fa-solid fa-book"></i><br />Courses</a
+            >
+          </li>
+          <li>
+            <a href="/Kanbas/Calendar/index.html"
+              ><i class="fa fa-calendar"></i><br />Calendar</a
+            >
+          </li>
+          <li>
+            <a href="/Kanbas/Inbox/index.html"
+              ><i class="fa-solid fa-envelope-open-text"></i><br />Inbox</a
+            >
+          </li>
+          <li>
+            <a href="/Kanbas/History/index.html"
+              ><i class="fa-regular fa-clock"></i><br />History</a
+            >
+          </li>
+          <li>
+            <a href="/Kanbas/Studio/index.html"
+              ><i class="fa-solid fa-desktop"></i><br />Studio</a
+            >
+          </li>
+          <li>
+            <a href="/Kanbas/Commons/index.html"
+              ><i class="fa-solid fa-right-from-bracket"></i><br />Commons</a
+            >
+          </li>
+          <li>
+            <a href="/Kanbas/Help/index.html"
+              ><i class="fa-solid fa-circle-question"></i><br />Help</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div style="width: 100%;margin-right: 20px;">
+        <div class="d-none d-md-block">
+            <div class="d-flex justify-content-between" style="margin: 10px">
+              <div class="d-flex">
+                <a style="margin-right: 8px" href=""
+                  ><i
+                    class="fa-solid fa-bars"
+                    style="margin-top: 3px; color: #ff7070"
+                    aria-hidden="true"
+                  ></i
+                ></a>
+                <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item wd-top-bar">
+                      <a href="/Kanbas/Courses/Home/screen.html"
+                        >CS5610.11744.202310</a
+                      >
+                    </li>
+                    <li class="breadcrumb-item wd-top-bar">
+                        <a href="/Kanbas/Courses/Assignments/screen.html"
+                          >Assignments</a
+                        >
+                      </li>
+                    <li class="breadcrumb-item active wd-top-bar-text">
+                      A1-ENV...
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+  
+              <button type="button">
+                <i class="fa-solid fa-glasses"></i> Student View
+              </button>
+            </div>
+          </div>
+
+        <div class="row">
+          <hr />
+          <br />
+          <div class="col-auto">
+            <div class="d-none d-md-block">
+              <ul class="wd-navigation">
+                <li>
+                  <a href="/Kanbas/Courses/Home/screen.html"> Home</a>
+                </li>
+                <li>
+                  <a href="/Kanbas/Courses/Modules/screen.html"> Modules</a>
+                </li>
+                <li><a href="/Kanbas/Courses/Piazza/index.html"> Piazza</a></li>
+                <li>
+                  <a href="/Kanbas/Courses/ZoomMeetings/screen.html">
+                    Zoom Meetings</a
+                  >
+                </li>
+
+                <li class="wd-active">
+                  <a href="/Kanbas/Courses/Assignments/screen.html">
+                    Assignments</a
+                  >
+                </li>
+
+                <li>
+                  <a href="/Kanbas/Courses/Quizzes/screen.html"> Quizzes</a>
+                </li>
+
+                <li>
+                  <a href="/Kanbas/Courses/Grades/screen.html"> Grades</a>
+                </li>
+
+                <li>
+                  <a href="/Kanbas/Courses/People/screen.html"> People</a>
+                </li>
+
+                <li>
+                  <a href="/Kanbas/Courses/PanoptoVideo/screen.html">
+                    Panopto Video</a
+                  >
+                </li>
+
+                <li>
+                  <a href="/Kanbas/Courses/Discussions/screen.html">
+                    Discussions</a
+                  ><i style="color: grey;" class="fa-regular fa-eye-slash float-end"></i>
+                </li>
+
+                <li>
+                  <a href="/Kanbas/Courses/Announcements/screen.html">
+                    Announcements</a
+                  ><i style="color: grey;" class="fa-regular fa-eye-slash float-end"></i>
+                </li>
+
+                <li><a href="/Kanbas/Courses/Pages/screen.html"> Pages</a><i style="color: grey;" class="fa-regular fa-eye-slash float-end"></i></li>
+
+                <li><a href="/Kanbas/Courses/Files/screen.html"> Files</a><i style="color: grey;" class="fa-regular fa-eye-slash float-end"></i></li>
+
+                <li>
+                  <a href="/Kanbas/Courses/Rubrics/screen.html"> Rubrics</a><i style="color: grey;" class="fa-regular fa-eye-slash float-end"></i>
+                </li>
+
+                <li>
+                  <a href="/Kanbas/Courses/Outcomes/screen.html"> Outcomes</a><i style="color: grey;" class="fa-regular fa-eye-slash float-end"></i>
+                </li>
+
+                <li>
+                  <a href="/Kanbas/Courses/Collaborations/screen.html">
+                    Collaborations</a
+                  ><i style="color: grey;" class="fa-regular fa-eye-slash float-end"></i>
+                </li>
+
+                <li>
+                  <a href="/Kanbas/Courses/Syllabus/screen.html"> Syllabus</a><i style="color: grey;" class="fa-regular fa-eye-slash float-end"></i>
+                </li>
+
+                <li>
+                  <a href="/Kanbas/Courses/Settings/CourseDetails/screen.html">
+                    Settings</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="float-end">
+              <a
+                class="btn btn- btn-md wd-button wd-color-green fw-bold"
+                href="#"
+                role="button"
+              >
+                <i class="fa fa-check-circle wd-color-green"></i>
+                Published</a
+              >
+              <a
+                style="margin: 8px 0px 8px 0px; background-color: lightgray"
+                class="btn btn-secondary btn-md"
+                href="#"
+                role="button"
+              >
+                <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+              </a>
+            </div>
+
+            <br />
+            <br />
+            <hr />
+
+            <div style="margin-left: 10px">
+              Assignment Name<br />
+              <input
+                class="form-control"
+                type="text"
+                placeholder="Assignment Name"
+                aria-label="default input example"
+                value="A1 - ENV + HTML"
+              /><br />
+              <textarea class="form-control" cols="50" rows="5">
+This assignment describes how to install the development environment for creating and working with Web applications we will be developing this semester. We will add new content every week, pushing the code to a GitHub source repository, and then deploying the content to a remote server hosted on Netify.</textarea
+              >
+
+              <br />
+              <div class="row text-end" style="padding-bottom: 16px">
+                <div
+                  class="col-sm-6 col-md-4"
+                  style="padding-top: 6px; padding-right: 16px"
+                >
+                  Points
+                </div>
+                <div class="col-sm-6 col-md-8 w-50">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Points"
+                    aria-label="default input example"
+                    value="100"
+                  />
+                </div>
+              </div>
+
+              <div class="row text-end" style="padding-bottom: 16px">
+                <div
+                  class="col-sm-6 col-md-4"
+                  style="padding-top: 6px; padding-right: 16px"
+                >
+                  Assignment Group
+                </div>
+                <div class="col-sm-6 col-md-8 w-50">
+                  <select class="form-control form-select">
+                    <option>ASSIGNMENTS</option>
+                    <option>Quizzes</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row text-end" style="padding-bottom: 16px">
+                <div
+                  class="col-sm-6 col-md-4"
+                  style="padding-top: 6px; padding-right: 16px"
+                >
+                  Display Grade as
+                </div>
+                <div class="col-sm-6 col-md-8 w-50">
+                  <select class="form-select form-control">
+                    <option>Percentage</option>
+                    <option>Decimal</option>
+                    <option>Percentile</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row text-end" style="padding-bottom: 16px">
+                <div
+                  class="col-sm-6 col-md-4"
+                  style="padding-top: 6px; padding-right: 16px"
+                ></div>
+                <div class="col-sm-6 col-md-8" style="text-align: start">
+                  <input type="checkbox" />
+
+                  Do not count this assignment towards the final grade
+                </div>
+              </div>
+
+              <div class="row text-end">
+                <div
+                  class="col-sm-6 col-md-4"
+                  style="padding-top: 6px; padding-right: 16px"
+                >
+                  Assign
+                </div>
+                <div class="col-sm-6 col-md-8 w-50" style="text-align: start">
+                  <div
+                    class="wd-group"
+                    style="
+                      border: 1px solid black;
+                      border-radius: 1%;
+                      padding: 10px;
+                    "
+                  >
+                    <b>Assign to</b>
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Choose"
+                      value="Everyone"
+                      aria-label="default input example"
+                    />
+                    <br />
+                    <b>Due</b>
+                    <input class="form-control" type="datetime-local" />
+                    <br />
+                    <div style="justify-content: space-around">
+                      <div class="row">
+                        <div class="col">
+                          <b>Available from</b>
+                        </div>
+                        
+                        <div class="col"> <b>Until</b></div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col">
+                          <input class="form-control" type="datetime-local" />
+                        </div>
+                        
+                        <div class="col"> <input class="form-control" type="datetime-local" /></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row text-end" style="padding-bottom: 16px">
+                  <div
+                    class="col-sm-6 col-md-4"
+                    style="padding-top: 6px; padding-right: 16px"
+                  ></div>
+                  <div class="col-sm-6 col-md-8 w-50" style="text-align: start">
+                    <button
+                      class="btn wd-button"
+                      style="width: -webkit-fill-available; height: 2.2rem; background-color: lightgray;margin-left: 7px;"
+                    >
+                      <i class="fa fa-plus" aria-hidden="true"></i>
+                      Add
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <hr style="margin-left: 10px" />
+              <div style="margin-left: 10px">
+                <div class="d-flex justify-content-between" style="padding-top: 6px">
+                  <span style="margin-left: 20px; padding-top: 6px">
+                    <input type="checkbox" />
+                    Notify users that this content has changed
+                  </span>
+
+                  <span >
+                    <a href="/Kanbas/Courses/Assignments/screen.html" style="text-decoration: none;">
+                        <button class="btn" style="margin-right: 2px; background-color: lightgray;">
+                            Cancel
+                        </button>
+                    </a>
+                    <a href="/Kanbas/Courses/Assignments/screen.html" style="text-decoration: none;">
+                        <button class="btn btn-danger" style="height: fit-content" href="/Kanbas/Courses/Assignments/screen.html">
+                            Save
+                        </button>
+                    </a>
+                    
+                  </span>
+                </div>
+
+                <hr style="margin-left: 10px" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <table width="100%">
+            <tbody>
+                <tr>
+                    <td valign="top">
+                        <ul class="wd-kanbas-navigation">
+                            <li>
+                                <a href="http://northeastern.edu"><i class="fa fa-tachometer"></i><br/>N</a>
+                            </li>
+                            <li>
+                                <a href="/Kanbas/Account/Profile/screen.html"">
+                                    <i class="fa-solid fa-circle-user wd-account"></i><br/>Account</a>
+                            </li>
+                            <li >
+                             <a href="/Kanbas/Dashboard/screen.html"><i class="fa fa-tachometer"></i><br/>Dashboard</a>
+                            </li>
+                            <li class="wd-active">
+                             <a href="/Kanbas/Courses/Home/screen.html"><i class="fa-solid fa-book"></i><br/>Courses</a>
+                            </li>
+                            <li>
+                             <a href="/Kanbas/Calendar/index.html"><i class="fa fa-calendar"></i><br/>Calendar</a></li>
+                            <li><a href="/Kanbas/Inbox/index.html"><i class="fa-solid fa-envelope-open-text"></i><br/>Inbox</a></li>
+                            <li><a href="/Kanbas/History/index.html"><i class="fa-regular fa-clock"></i><br/>History</a></li>
+                            <li><a href="/Kanbas/Studio/index.html"><i class="fa-solid fa-desktop"></i><br/>Studio</a></li>
+                            <li><a href="/Kanbas/Commons/index.html"><i class="fa-solid fa-right-from-bracket"></i><br/>Commons</a></li>
+                            <li><a href="/Kanbas/Help/index.html"><i class="fa-solid fa-circle-question"></i><br/>Help</a></li>
+                        </ul>
+                    </td>  
+                    <td valign="top">
+                        <ul class="wd-navigation">
+                            <li>
+                              <a href="/Kanbas/Courses/Home/screen.html">
+                                Home</a></li>
+                            <li><a href="/Kanbas/Courses/Modules/screen.html">
+                                Modules</a></li>
+                            <li><a href="/Kanbas/Courses/Piazza/index.html">
+                                Piazza</a></li>
+                            <li><a href="/Kanbas/Courses/ZoomMeetings/screen.html">
+                                Zoom Meetings</a></li>    
+                        
+                            <li class="wd-active"><a href="/Kanbas/Courses/Assignments/screen.html">
+                                Assignments</a></li>
+                            
+                            <li><a href="/Kanbas/Courses/Quizzes/screen.html">
+                                    Quizzes</a></li>
+                            
+                            <li><a href="/Kanbas/Courses/Grades/screen.html">
+                                    Grades</a></li> 
+                             
+                            <li><a href="/Kanbas/Courses/People/screen.html">
+                                    People</a></li>    
+                            
+                             <li><a href="/Kanbas/Courses/PanoptoVideo/screen.html">
+                                Panopto Video</a></li>
+                             
+                             <li><a href="/Kanbas/Courses/Discussions/screen.html">
+                                Discussions</a></li> 
+                             
+                            <li><a href="/Kanbas/Courses/Announcements/screen.html">
+                                Announcements</a></li>    
+                            
+                            <li><a href="/Kanbas/Courses/Pages/screen.html">
+                                Pages</a></li>     
+                    
+                            <li><a href="/Kanbas/Courses/Files/screen.html">
+                                 Files</a></li>  
+                             
+                            <li><a href="/Kanbas/Courses/Rubrics/screen.html">
+                                Rubrics</a></li> 
+                            
+                                
+                            <li><a href="/Kanbas/Courses/Outcomes/screen.html">
+                                Outcomes</a></li> 
+                             
+                            <li><a href="/Kanbas/Courses/Collaborations/screen.html">
+                                Collaborations</a></li>  
+                                
+                            <li><a href="/Kanbas/Courses/Syllabus/screen.html">
+                                Syllabus</a></li>
+                                
+                            <li><a href="/Kanbas/Courses/Settings/CourseDetails/screen.html">
+                                 Settings</a></li>    
+                    
+                                    
+                    
+                    
+                        </ul>
+                    </td>
+                  <td valign="top">
+                    <select>
+                        <option selected>SpeedGrader</option>
+                        <option>Option 2</option>
+                    </select>
+                    <hr/>
+                    <h2>Assignment Name</h2>
+                    <input value="A1 - ENV + HTML"/>
+                    <br/>
+                    <br/>
+                    <textarea>This is the Assignment Description.
+                    </textarea>
+                    <br/>
+                    <br/>
+                    <label for="POINTS">Points
+                
+                    </label>
+                    <br/>
+                    <input id="POINTS" value="100" />
+                    <br/>
+                    <br/>
+                    <label for="assgGroup">Assignment Group</label><br/>
+                    <select id="assgGroup">
+                        <option>ASSIGNMENTS</option>
+                        <option>PROJECT</option>
+                        <option>EXAM</option>
+                        <option>QUIZZES</option>
+                    </select>
+                    <br/>
+                    <br/>
+                    <label>Display Grade as</label><br/>
+                    <select>
+                        <option>Percentage</option>
+                        <option>Letter Grade</option>
+                    </select>
+                    <br/>
+                    <br/>
+                    <label>Submission Type</label><br/>
+                    <select>
+                        <option>Online</option>
+                        <option>Offline</option>
+                        <option>Hybrid</option>
+                    </select>
+                    <br/>
+                    <br/>
+                    <label>Online Entry Options</label><br/>
+                        <input type="checkbox" name="online-entry-checkbox"/>Text Entry<br/>
+                        <input type="checkbox" name="online-entry-checkbox"/>Website URL<br/>
+                        <input type="checkbox" name="online-entry-checkbox"/>Media Recordings<br/>
+                        <input type="checkbox" name="online-entry-checkbox"/>Student Annotations<br/>
+                        <input type="checkbox" name="online-entry-checkbox"/>File Uploads<br/>
+                    <br/>
+                    <br/>
+                    <label>Assign</label>
+                    <br/>
+                    <label>Assign to</label><br/>
+                    <input value="Everyone"/>
+                    <br/>
+                    <br/>
+                    <label>Due </label>
+                    <br/>
+                    <input type="date" value="2021-01-01"/><br/>
+                    <br/>
+                    <br/>
+                    <label>Available from</label><br/>
+                    <input type="date" value="2021-01-01"/><br/>
+                    <br/>
+                    <br/>
+                    
+                    <label>Until
+                
+                    </label>
+                    <br/>
+                    <input type="date" value="2021-01-01"/><br/>
+                    <br/>
+                    <br/>
+                    <a href="/Kanbas/Courses/Assignments/screen.html"><button>Cancel</button></a>
+                    <a href="/Kanbas/Courses/Assignments/screen.html"><button>Save</button></a>
+                  </td>
+                </tr>
+            </tbody>
+        </table> -->
+  </body>
+</html>

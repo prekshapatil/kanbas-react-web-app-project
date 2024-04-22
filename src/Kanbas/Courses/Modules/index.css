@@ -1,16 +1,19 @@
 .wd-modules,
 .wd-modules * {
-  border-radius: 0% ;
-  border: none ;
+  border-radius: 0%;
+  border: none;
   margin: 0px;
-  padding: 0px ;
+  padding: 0px;
 }
 
-
+.wd-modules {
+  margin: 5px;
+}
 
 .wd-modules > li {
   background-color: lightgray;
   border: 1px solid gray !important;
+  border-left: none !important;
 }
 
 .wd-modules > li > div {
@@ -25,17 +28,63 @@
 }
 
 .wd-modules > li {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
-.list-group-item > span  {
-    margin-left: 25px;
+.wd-course-status{
+    margin-top: 7px;
+    border-radius: 0%;
+    list-style-type: none;
 }
 
-#nav_main{
-    margin: 0;
+.wd-course-status>li{
+    margin:3px;
+    background-color: lightgray;
+    border: 1px solid gray;
+    padding-left: 13px;
 }
 
-.wd-padding-0 {
-  padding: 0px;
+.wd-course-status > li > a{
+   text-decoration: none;
+   display: block;
+   width: 100%;
+   color: inherit;
 }
+
+.wd-coming-up{
+    list-style: none;
+  }
+
+  .wd-coming-up > li > a{
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    color: inherit;
+    padding-left: 15px;
+  }
+
+  .wd-c-up-c-red{
+    color: red;
+ }
+
+ .wd-come a {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    color: red;
+    padding-left: 15px;
+ }
+
+ .wd-top-bar > a{
+    text-decoration: none;
+    color: #ff7070;
+ }
+
+ .wd-top-bar-text{
+    text-decoration: none;
+    color: black !important;
+ }
+
+ .wd-btn-color{
+    background-color: lightgray !important;
+ }

@@ -1,0 +1,41 @@
+.wd-component-bg-color {
+    background-color: lightgray !important;
+  }
+  
+  .wd-list-assignment {
+    padding: 0px;
+    border-radius: 0%;
+    list-style-type: none;
+  }
+  
+  .wd-list-assignment > ul > li {
+    padding-top: 12px;
+  }
+  
+  .wd-list-assignment > li {
+    background-color: lightgray;
+    border: 1px solid gray;
+    margin-bottom: 5px;
+    padding: 0px;
+    border-radius: 0%;
+    padding-top: 15px;
+  }
+  
+  .wd-list-assignment > ul > ul > li {
+    padding: 5px;
+    border-radius: 0%;
+    border-top: 1px solid gray !important;
+    border-left: 3px solid green;
+  }
+  
+  .wd-color-green {
+    color: green;
+  }
+  
+  .wd-margin-right {
+    margin-right: 20px;
+  }
+  
+  .wd-button {
+    margin-left: 5px;
+  }

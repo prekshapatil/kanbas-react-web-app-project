@@ -1,0 +1,8 @@
+.wd-nav-style {
+  --bs-breadcrumb-divider: '>';
+}
+
+.wd-nav-div-margin{
+    margin-left:15px;
+    margin-top:5px
+}

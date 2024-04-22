@@ -1,51 +1,44 @@
 import { configureStore } from "@reduxjs/toolkit";
 import modulesReducer from "../Courses/Modules/reducer";
-import assignmentsReducer from "../Courses/Assignments/assignmentReducer";
-import quizzesReducer from "../Courses/Quizzes/quizzesReducer";
-import userReducer from "../../Users/userReducer";
-import questionsReducer from "../Courses/Questions/questionsReducer";
-import blanksReducer from "../Courses/Questions/blanksReducer";
-import choicesReducer from "../Courses/Questions/choicesReducer";
+import assignmentReducer from "../Courses/Assignments/reducer";
+import quizReducer from "../Courses/Quizzes/reducer";
+import textBoxReducer from "../Common/TextBox/reducer";
+import questionsReducer from "../Courses/Quizzes/QuizEditor/Questions/reducer";
+import { useDispatch } from "react-redux";
 export interface KanbasState {
   modulesReducer: {
     modules: any[];
     module: any;
   };
-  assignmentsReducer: {
+  assignmentReducer:{
     assignments: any[];
     assignment: any;
   };
-  quizzesReducer: {
+  quizReducer:{
     quizzes: any[];
     quiz: any;
   };
-  userReducer: {
-    user: any;
-  };
-  questionsReducer:{
+  questionsReducer: {
     questions: any[];
     question: any;
-  }
-  choicesReducer:{
-    choices:any[]
-    choice:any;
-  }
-  blanksReducer:{
-    blanks:any[]
-    blank:any;
-  }
+  };
+  textBoxReducer: {
+    textBox: {
+      text: string;
+    };
+  };
+
 }
 const store = configureStore({
   reducer: {
     modulesReducer,
-    assignmentsReducer,
-    quizzesReducer,
-    userReducer,
+    assignmentReducer,
+    quizReducer,
     questionsReducer,
-    choicesReducer,
-    blanksReducer
+    textBoxReducer
   }
 });
 
-
+export type AppDispatch = typeof store.dispatch
+export const useAppDispatch = () => useDispatch<AppDispatch>()
 export default store;

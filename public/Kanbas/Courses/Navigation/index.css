@@ -2,7 +2,7 @@
     background-color: white;
     list-style: none;
     padding: 0px;
-    width: 125px;
+    width: 160px;
     margin: 0px;
     margin-left: 20px;
   }
@@ -23,4 +23,8 @@
     color: red;
     text-decoration: none;
   }
+  .wd-navigation>li>i{
+    padding-top: 7px;
+  }
+  
   

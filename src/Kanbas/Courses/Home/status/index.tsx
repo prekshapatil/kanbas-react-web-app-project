@@ -1,53 +1,110 @@
+import {
+  FaBan,
+  FaBell,
+  FaCaretRight,
+  FaChartBar,
+  FaCheckCircle,
+  FaCrosshairs,
+  FaFileImport,
+  FaNewspaper,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
+import Calendar from "./Calendar";
+import { BsInfoCircleFill } from "react-icons/bs";
 
-const secButtons = [{name :"Import Existing Content", icon:"fa fa-upload"}, {name :"Import From Commons", icon:"fa fa-cloud-upload"}, {name :"Choose Home Page", icon:"fa fa-crosshairs"}, {name :"View Course Stream", icon:"fa fa-bar-chart"}, {name :"New Announcement", icon:"fa fa-bullhorn"}, {name :"New Analysis", icon:"fa fa-bar-chart"}, {name :"View Notification", icon:"fa fa-bell-o"}];
-const lectureTimings = [{name :"Lecture 1", date:"CS4550.12631.202410 Sep 7 At 11:45am"}, {name :"Lecture 2", date:"CS4550.12631.202410 Sep 6 At 18:45pm"}, {name :"Lecture 3", date:"CS4550.12631.202410 Sep 9 At 12:45pm"}];
-function CourseStatus() {  
-return (
-  <>
-        <h2>Course Status</h2>
-        <div className="d-grid gap-1 left-text col-12">
-            <div className="row">
-            <div className="col" style={{"paddingRight": "0"}}><button className="btn btn-light col-12" type="button"><i className="fa fa-times-circle-o" aria-hidden="true"></i>UnPublish</button></div>
-            <div className="col" style={{"paddingRight": "0"}}><button className="btn btn-success col-12" type="button"><i className="fa fa-check-circle-o" aria-hidden="true"></i>Published</button></div>
-            </div>
-          </div>
-          <br/>
-          <div className="d-grid gap-1 left-text col-12">
-          {secButtons.map(({name, icon} : {name:string, icon:string}) => (
-        <button className="btn btn-light text-left" type="button"><i className={icon} aria-hidden="true"></i>{name}</button>
-        ))}
-          </div>
-          <br/>
-        <h5>To Do</h5><hr/>
-        <ul className="list-group">
-            <li className="d-flex col-12">
-            <span className="badge bg-danger rounded-pill me-1" style={{"marginRight": "8px;"}}>1</span>
-            <span style={{"textAlign": "left", "color": "red"}}>Grade A1 - ENV + HTML 
-            </span>
-            </li>
-            <li className="d-flex col-12">
-            <span style={{"color": "rgb(139, 138, 138)", "fontSize": "0.8em", "marginLeft": "30px"}}>100 points . Sep 18 at 11:59pm</span>
-                </li>
-          </ul>
-          <br/>
-        <div className="d-flex flex-row col-12">
-            <h5 className="d-flex col-6">Comming Up</h5>
-            <a className=" d-flex col-6" href="#" style={{"textAlign": "left", "color": "red"}}> <i className="fa fa-calendar mt-1 me-1" aria-hidden="true" ></i>View Calender</a>
+function Status() {
+  return (
+    <div style={{"marginLeft":"10px"}}>
+      <div
+        className="flex-grow-0 me-2 d-none d-lg-block"
+        style={{ width: "250px" }}
+      >
+        <h5>Course Status</h5>
+        <div style={{ marginLeft: "4px" }}>
+          <button type="button">
+            <FaBan style={{ color: "gray" }} /> Unpublished
+          </button>
+          <button
+            style={{ marginLeft: "4px" }}
+            type="button"
+            className="btn-green"
+          >
+            <FaCheckCircle />
+            Published
+          </button>
         </div>
-        <hr/>
-        {lectureTimings.map(({name, date} : {name:string, date:string}) => (
+        <div>
+          <ul className="list-group wd-course-status">
+            <li>
+              <Link to={"#"}>
+                <FaFileImport /> Import Existing Content
+              </Link>
+            </li>
+            <li>
+              <Link to={"#"}>
+                <FaCaretRight /> Import from Commons
+              </Link>
+            </li>
+            <li>
+              <Link to={"#"}>
+                <FaCrosshairs /> Choose Home Page
+              </Link>
+            </li>
+            <li>
+              <Link to={"#"}>
+                <FaChartBar /> View Course Stream
+              </Link>
+            </li>
+            <li>
+              <Link to={"#"}>
+                <FaNewspaper /> Announcement
+              </Link>
+            </li>
+            <li>
+              <Link to={"#"}>
+                <FaChartBar /> New Analytics
+              </Link>
+            </li>
+            <li>
+              <Link to={"#"}>
+                <FaBell /> View Course Notification
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <br/>
+        <h5 className="wd-to-do">
+          <strong>To Do </strong>{" "}
+        </h5>
+      
+        <hr />
         <ul className="list-group">
-            <li className="d-flex col-12">
-            <span style={{"textAlign": "left", "color": "red"}}><i className="fa fa-calendar me-1" aria-hidden="true"></i>{name}
-            </span>
-            </li>
-        <li className="d-flex col-12">
-        <span style={{"color": "rgb(139, 138, 138)", "fontSize": "0.8em", "marginLeft": "30px"}}>{date}</span>
-            </li>
+          <li className="d-flex justify-content-between align-items-start">
+            <div>
+              <div>
+                <Link
+                  to={"#"}
+                  className="wd-coming-up-color-red"
+                  style={{ textDecoration: "none",color:"red" }}
+                >
+                  <BsInfoCircleFill/>{" "}
+                  A1 - ENV + HTML
+                </Link>
+              </div>
+              <div style={{ color:"grey" }}>
+                {" "}
+                100 points - Sept 18 at 11:59pm
+              </div>
+            </div>
+            <i className="fa fa-times wd-fg-color-gray"></i>
+          </li>
         </ul>
-        ))}
-  </>
+        <br/>
+      <Calendar/>
+      </div>
+      
+    </div>
   );
 }
 
-export default CourseStatus;
+export default Status;

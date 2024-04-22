@@ -1,191 +1,201 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="../../style.css" />
-        <link rel="stylesheet" href="../Navigation/index.css" />
-        <link rel="stylesheet" href="../../libs/font-awesome/css/font-awesome.min.css" />
-        <link rel="stylesheet" href="../../libs/bootstrap.min.css">
-    </head>
-    <body>
-        <!-- Implement links to Kanbas and Course Navigation -->
-        <div class="d-flex">
-          <div class="d-none d-md-block">
-                        <ul class="wd-kanbas-navigation">
-                            <li style="margin-bottom: 0; padding: 0;"><a href="http://northeastern.edu"><div style="font-size: 4em; color: red;  font-weight: bolder;">N</div></a></li>
-                            <li><a href="/Kanbas/Account/Profile/screen.html">
-                              <i class="fa fa-user-circle " id = "wd-kanbas-navigation-white" aria-hidden="true"></i>Account</a></li>
-                            <li class="wd-active">
-                              <a href="/Kanbas/Dashboard/screen.html">
-                                <i class="fa fa-tachometer"></i> Dashboard</a>
-                            </li>
-                            <li><a href="/Kanbas/Courses/Home/screen.html">
-                              <i class="fa fa-book"></i>Courses</a> 
-                          </li>
-                            <li><a href="#"><i class="fa fa-calendar"></i> Calendar</a></li>
-                            <li><a href="#"> 
-                              <i class="fa fa-inbox"></i> <div class=".wd-display-block">Inbox</div></a></li>
-                            <li><a href="#">
-                              <i class="fa fa-history" aria-hidden="true"></i>History</a></li>
-                            <li><a href="#">
-                              <i class="fa fa-laptop" aria-hidden="true"></i>Studio</a></li>
-                            <li><a href="#">
-                              <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>Commons</a></li>
-                            <li><a href="#">
-                              <i class="fa fa-question-circle" aria-hidden="true"></i><div class=".wd-display-block">Help</div></a></li>
-                          </ul>
-          </div>
-          <div class="flex-fill">
-      <div class="p-4">
-                            <h1>Dashboard</h1> <hr />
-                            <h2>Published Courses (11)</h2> 
-                            <div class="row">
-                              <div class="row row-cols-1 row-cols-md-5 g-4">
-                                <div class="col" style="width: 300px">
-                                  <div class="card">
-                                    <img src="../../images/reactjs.jpg" class="card-img-top"
-                                         style="max-height: 150px"/>
-                                    <div class="card-body">
-                                      <a class="card-title" href="/Kanbas/Courses/Home/screen.html"
-                                         style="text-decoration: none; color: navy; font-weight: bold">
-                                         CS1234 React JS</a>
-                                      <p class="card-text">Full Stack software developer</p>
-                                      <a html="/Kanbas/Courses/Home/screen.html" class="btn btn-primary"> Go </a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col" style="width: 300px">
-                                  <div class="card">
-                                    <img src="../../images/java.jpg" class="card-img-top"
-                                         style="max-height: 150px"/>
-                                    <div class="card-body">
-                                      <a class="card-title" href="/Kanbas/Courses/Home/screen.html"
-                                         style="text-decoration: none; color: navy; font-weight: bold">
-                                         CS1235 JAVA programming</a>
-                                      <p class="card-text">Full Stack software developer</p>
-                                      <a href="/Kanbas/Courses/Home/screen.html" class="btn btn-primary"> Go </a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col" style="width: 300px">
-                                  <div class="card">
-                                    <img src="../../images/python.jpg" class="card-img-top"
-                                         style="max-height: 150px"/>
-                                    <div class="card-body">
-                                      <a class="card-title" href="/Kanbas/Courses/Home/screen.html"
-                                         style="text-decoration: none; color: navy; font-weight: bold">
-                                         CS1236 Python JS</a>
-                                      <p class="card-text">Full Stack software developer</p>
-                                      <a href="/Kanbas/Courses/Home/screen.html" class="btn btn-primary"> Go </a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col" style="width: 300px">
-                                  <div class="card">
-                                    <img src="../../images/webdev.jpg" class="card-img-top"
-                                         style="max-height: 150px"/>
-                                    <div class="card-body">
-                                      <a class="card-title" href="/Kanbas/Courses/Home/screen.html"
-                                         style="text-decoration: none; color: navy; font-weight: bold">
-                                         CS12311 Web Development</a>
-                                      <p class="card-text">Full Stack software developer</p>
-                                      <a href="/Kanbas/Courses/Home/screen.html" class="btn btn-primary"> Go </a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col" style="width: 300px">
-                                  <div class="card">
-                                    <img src="../../images/javascript.jpg" class="card-img-top"
-                                         style="max-height: 150px"/>
-                                    <div class="card-body">
-                                      <a class="card-title" href="/Kanbas/Courses/Home/screen.html"
-                                         style="text-decoration: none; color: navy; font-weight: bold">
-                                         CS1334 JavaScript</a>
-                                      <p class="card-text">Full Stack software developer</p>
-                                      <a href="/Kanbas/Courses/Home/screen.html" class="btn btn-primary"> Go </a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col" style="width: 300px">
-                                  <div class="card">
-                                    <img src="../../images/data.jpg" class="card-img-top"
-                                         style="max-height: 150px"/>
-                                    <div class="card-body">
-                                      <a class="card-title" href="/Kanbas/Courses/Home/screen.html"
-                                         style="text-decoration: none; color: navy; font-weight: bold">
-                                         CS12364 Data Warehousing JS</a>
-                                      <p class="card-text">Full Stack software developer</p>
-                                      <a href="/Kanbas/Courses/Home/screen.html" class="btn btn-primary"> Go </a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col" style="width: 300px">
-                                  <div class="card">
-                                    <img src="../../images/reactjs.jpg" class="card-img-top"
-                                         style="max-height: 150px"/>
-                                    <div class="card-body">
-                                      <a class="card-title" href="/Kanbas/Courses/Home/screen.html"
-                                         style="text-decoration: none; color: navy; font-weight: bold">
-                                         CS1234 React JS</a>
-                                      <p class="card-text">Full Stack software developer</p>
-                                      <a href="/Kanbas/Courses/Home/screen.html" class="btn btn-primary"> Go </a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col" style="width: 300px">
-                                  <div class="card">
-                                    <img src="../../images/java.jpg" class="card-img-top"
-                                         style="max-height: 150px"/>
-                                    <div class="card-body">
-                                      <a class="card-title" href="/Kanbas/Courses/Home/screen.html"
-                                         style="text-decoration: none; color: navy; font-weight: bold">
-                                         CS1235 JAVA programming</a>
-                                      <p class="card-text">Full Stack software developer</p>
-                                      <a href="/Kanbas/Courses/Home/screen.html" class="btn btn-primary"> Go </a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col" style="width: 300px">
-                                  <div class="card">
-                                    <img src="../../images/python.jpg" class="card-img-top"
-                                         style="max-height: 150px"/>
-                                    <div class="card-body">
-                                      <a class="card-title" href="/Kanbas/Courses/Home/screen.html"
-                                         style="text-decoration: none; color: navy; font-weight: bold">
-                                         CS1236 Python JS</a>
-                                      <p class="card-text">Full Stack software developer</p>
-                                      <a href="/Kanbas/Courses/Home/screen.html" class="btn btn-primary"> Go </a>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col" style="width: 300px">
-                                    <div class="card">
-                                      <img src="../../images/java.jpg" class="card-img-top"
-                                           style="max-height: 150px"/>
-                                      <div class="card-body">
-                                        <a class="card-title" href="/Kanbas/Courses/Home/screen.html"
-                                           style="text-decoration: none; color: navy; font-weight: bold">
-                                           CS1235 JAVA programming</a>
-                                        <p class="card-text">Full Stack software developer</p>
-                                        <a href="/Kanbas/Courses/Home/screen.html" class="btn btn-primary"> Go </a>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col" style="width: 300px">
-                                    <div class="card">
-                                      <img src="../../images/python.jpg" class="card-img-top"
-                                           style="max-height: 150px"/>
-                                      <div class="card-body">
-                                        <a class="card-title" href="/Kanbas/Courses/Home/screen.html"
-                                           style="text-decoration: none; color: navy; font-weight: bold">
-                                           CS1236 Python JS</a>
-                                        <p class="card-text">Full Stack software developer</p>
-                                        <a href="/Kanbas/Courses/Home/screen.html" class="btn btn-primary"> Go </a>
-                                      </div>
-                                    </div>
-                                  </div>
-                              </div>
-                            </div>
-                          </div>
+  <head>
+    <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" />
+    <script
+    src="https://kit.fontawesome.com/32d47a68e6.js"
+    crossorigin="anonymous"
+  ></script>
+    <link rel="stylesheet" href="/Kanbas/styles.css" />
+    <link rel="stylesheet" href="/Kanbas/Navigation/index.css" />
+  </head>
+  <body>
+<div class="d-flex">
+<div style="background-color: black;min-height: 100%;">
+    <ul class="wd-kanbas-navigation">
+        <li>
+            <a href="http://northeastern.edu"><br/>N</a>
+        </li>
+        <li>
+            <a href="/Kanbas/Account/Profile/screen.html"">
+                <i class="fa-solid fa-circle-user wd-account"></i><br/>Account</a>
+        </li>
+        <li class="wd-active">
+         <a href="/Kanbas/Dashboard/screen.html"><i class="fa fa-tachometer"></i><br/>Dashboard</a>
+        </li>
+        <li>
+         <a href="/Kanbas/Courses/Home/screen.html"><i class="fa-solid fa-book"></i><br/>Courses</a>
+        </li>
+        <li>
+         <a href="/Kanbas/Calendar/index.html"><i class="fa fa-calendar"></i><br/>Calendar</a></li>
+        <li><a href="/Kanbas/Inbox/index.html"><i class="fa-solid fa-envelope-open-text"></i><br/>Inbox</a></li>
+        <li><a href="/Kanbas/History/index.html"><i class="fa-regular fa-clock"></i><br/>History</a></li>
+        <li><a href="/Kanbas/Studio/index.html"><i class="fa-solid fa-desktop"></i><br/>Studio</a></li>
+        <li><a href="/Kanbas/Commons/index.html"><i class="fa-solid fa-right-from-bracket"></i><br/>Commons</a></li>
+        <li><a href="/Kanbas/Help/index.html"><i class="fa-solid fa-circle-question"></i><br/>Help</a></li>
+    </ul>
+</div>
+<div class="p-4">
+    <h1>Dashboard</h1>
+    <hr />
+    <h2>Published Courses (7)</h2>
+    <hr />
+    <div class="row">
+      <div class="row row-cols-1 row-cols-md-5 g-4">
+        <div class="col" style="width: 300px">
+          <div class="card">
+            <img
+              src="/images/fs.jpg"
+              class="card-img-top"
+              style="height: 150px"
+            />
+            <div class="card-body" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              <a
+                class="card-title"
+                href="/Kanbas/Courses/Home/screen.html"
+                style="text-decoration: none; color: navy; font-weight: bold"
+              >
+                CS1234 React JS</a
+              >
+              <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">CS1234.12631.202410
+              </br>Fall 2023 Semester Full Term
+            </p>
+              
+              <i class="fa fa-pencil-square-o wd-fg-color-gray" aria-hidden="true"></i>
+            </div>
           </div>
         </div>
-      </body>
+        <div class="col" style="width: 300px">
+          <div class="card">
+            <img
+              src="/images/dbms.jpg"
+              class="card-img-top"
+              style="height: 150px"
+            />
+            <div class="card-body" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              <a
+                class="card-title"
+                href="/Kanbas/Courses/Home/screen.html"
+                style="text-decoration: none; color: navy; font-weight: bold"
+              >
+                CS5200 DBMS </a
+              >
+              <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">CS5200.12631.202410
+            </br>Fall 2023 Semester Full Term</p>
+              <i class="fa fa-pencil-square-o wd-fg-color-gray" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col" style="width: 300px">
+          <div class="card">
+            <img
+              src="/images/algo.jpg"
+              class="card-img-top"
+              style="max-height: 150px"
+            />
+            <div class="card-body" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              <a
+                class="card-title"
+                href="/Kanbas/Courses/Home/screen.html"
+                style="text-decoration: none; color: navy; font-weight: bold"
+              >
+                CS5800 Algorithms</a
+              >
+              <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">CS5800.12631.202410
+            </br>Fall 2023 Semester Full Term</p>
+              <i class="fa fa-pencil-square-o wd-fg-color-gray" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" style="width: 300px">
+          <div class="card">
+            <img
+              src="/images/pdp.jpg"
+              class="card-img-top"
+              style="height: 150px"
+            />
+            <div class="card-body" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              <a
+                class="card-title"
+                href="/Kanbas/Courses/Home/screen.html"
+                style="text-decoration: none; color: navy; font-weight: bold"
+              >
+                CS5010 PDP</a
+              >
+              <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">CS5010.12631.202410
+            </br>Fall 2023 Semester Full Term</p>
+              <i class="fa fa-pencil-square-o wd-fg-color-gray" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" style="width: 300px">
+          <div class="card">
+            <img
+              src="/images/webdev.jpg"
+              class="card-img-top"
+              style="height: 150px"
+            />
+            <div class="card-body" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              <a
+                class="card-title"
+                href="/Kanbas/Courses/Home/screen.html"
+                style="text-decoration: none; color: navy; font-weight: bold"
+              >
+                CS5610 Web Development</a
+              >
+              <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">CS5610.12631.202410
+            </br>Fall 2023 Semester Full Term</p>
+              <i class="fa fa-pencil-square-o wd-fg-color-gray" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col" style="width: 300px">
+          <div class="card">
+            <img
+              src="/images/ood.jpg"
+              class="card-img-top"
+              style="height: 150px"
+            />
+            <div class="card-body" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              <a
+                class="card-title"
+                href="/Kanbas/Courses/Home/screen.html"
+                style="text-decoration: none; color: navy; font-weight: bold"
+              >
+                CS3200 OOD</a
+              >
+              <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">CS3200.12631.202410
+            </br>Fall 2023 Semester Full Term</p>
+              <i class="fa fa-pencil-square-o wd-fg-color-gray" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col" style="width: 300px">
+          <div class="card">
+            <img
+              src="/images/fse.jpg"
+              class="card-img-top"
+              style="height: 150px"
+            />
+            <div class="card-body" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              <a
+                class="card-title"
+                href="/Kanbas/Courses/Home/screen.html"
+                style="text-decoration: none; color: navy; font-weight: bold"
+              >
+                CS5500 FSE</a
+              >
+              <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">CS5510.12631.202410
+            </br>Fall 2023 Semester Full Term</p>
+              <i class="fa fa-pencil-square-o wd-fg-color-gray" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </body>
 </html>
+

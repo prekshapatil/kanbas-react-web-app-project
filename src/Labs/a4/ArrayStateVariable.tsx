@@ -7,20 +7,20 @@ function ArrayStateVariable() {
   const deleteElement = (index: number) => {
     setArray(array.filter((item, i) => i !== index));
   };
-return (
+  return (
     <div>
-        <h2>Array State Variable</h2>
-        <button className="btn btn-success" onClick={addElement}>Add Element</button>
-        <ul className="list-group mt-1" style={{"width":"20%"}}>
-            {array.map((item, index) => (
-                <li className="list-group-item" key={index}>
-                    {item}
-                    <button className="btn btn-danger ms-2 float-end" onClick={() => deleteElement(index)}>
-                        Delete</button>
-                </li>
-            ))}
-        </ul>
+      <h2>Array State Variable</h2>
+      <button onClick={addElement}>Add Element</button>
+      <ul>
+        {array.map((item, index) => (
+          <li key={index}>
+            {item}
+            <button onClick={() => deleteElement(index)}>
+              Delete</button>
+          </li>
+        ))}
+      </ul>
     </div>
-);
+  );
 }
 export default ArrayStateVariable;
