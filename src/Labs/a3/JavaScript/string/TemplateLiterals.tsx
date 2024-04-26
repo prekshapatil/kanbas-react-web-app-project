@@ -1,4 +1,6 @@
-function TemplateLiterals(){
+import React from 'react'
+
+const TemplateLiterals = () => {
     const five = 2 + 3;
     const result1 = "2 + 3 = " + five;
     const result2 = `2 + 3 = ${2 + 3}`;
@@ -7,15 +9,24 @@ function TemplateLiterals(){
     const loggedIn = false;
     const greeting2 = `Logged in: ${loggedIn ? "Yes" : "No"}`;
 
-    return(
+    return (
         <>
-        <h2>Template Literals</h2>
-        result1 = {result1}<br/>
-        result2 = {result2}<br/>
-        greeting1 ={greeting1}<br/>
-        greeting2 = {greeting2}<br/>
+            <h3>Template Literals</h3>
+            <p>
+                result1 = {result1}
+            </p>
+            <p>
+                result2 = {result2}
+            </p>
+            <p>
+                greeting1 = {greeting1}
+            </p>
+            <p>
+                greeting2 = {greeting2}
+            </p>
         </>
-    )
+    );
+
 }
 
-export default TemplateLiterals;
+export default TemplateLiterals

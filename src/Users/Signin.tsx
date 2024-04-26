@@ -1,7 +1,9 @@
-import { useState } from "react";
-import { useNavigate,Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { User } from "./client";
 import * as client from "./client";
+import "./index.css";
+
 export default function Signin() {
   const [credentials, setCredentials] = useState<User>({
     _id: "",
@@ -11,49 +13,56 @@ export default function Signin() {
     lastName: "",
     role: "USER",
   });
+  useEffect(() => {
+    async function fetchLoginStatus() {
+    console.log("fetchLoginStatus");
+      const status = await client.isAuthenticated();
+      if (status) {
+        navigate("/Kanbas/Account/Profile");
+      }
+    }
+    fetchLoginStatus();
+  }, []);
   const navigate = useNavigate();
   const signin = async () => {
     await client.signin(credentials);
     navigate("/Kanbas/Account/Profile");
   };
   return (
-    <div>
+    <div className="SignInBox d-flex flex-column justify-content-center align-items-center mt-5">
       <h1>Signin</h1>
-      <input
-        type="text"
-        className="form-control"
-        style={{ width: "200px", margin: "10px" }}
-        value={credentials.username}
-        onChange={(e) =>
-          setCredentials({ ...credentials, username: e.target.value })
-        }
-      />
-      <input
-        type="text"
-        className="form-control"
-        style={{ width: "200px", margin: "10px" }}
-        value={credentials.password}
-        onChange={(e) =>
-          setCredentials({ ...credentials, password: e.target.value })
-        }
-      />
-      <button className="btn btn-primary ms-2" onClick={signin}>
-        {" "}
-        Signin{" "}
-      </button>
-
-      <br></br>
-        <br></br>
-          Don't have an account?{" "}
-          <br></br>
-          <Link
-            to="/Kanbas/Account/Signup"
-            className="btn btn-primary ms-2"
-            style={{ width: "100px" }}
+      <br />
+      <div className="d-flex flex-column gap-3 w-50">
+        <input
+          className="input-group mb-3"
+          value={credentials.username}
+          onChange={(e) =>
+            setCredentials({ ...credentials, username: e.target.value })
+          }
+          placeholder="username"
+        />
+        <input
+          className="input-group"
+          value={credentials.password}
+          onChange={(e) =>
+            setCredentials({ ...credentials, password: e.target.value })
+          }
+          placeholder="password"
+        />
+        <div className="d-flex flex-column justify-content-center align-items-center gap-4">
+          <button className="siginbutton" onClick={signin}>
+            {" "}
+            Signin{" "}
+          </button>
+          <button
+            className="signupbutton"
+            onClick={() => navigate("/Kanbas/Account/Signup")}
           >
             {" "}
-            Sign Up{" "}
-          </Link>
+            Signup{" "}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

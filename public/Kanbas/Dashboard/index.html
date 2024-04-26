@@ -1,159 +1,78 @@
 <html>
-  <head>
-    <link href="/libs/bootstrap/bootstrap.min.css" rel="stylesheet" />
-  </head>
-  <body>
+
+<head>
+    <link rel="stylesheet" href="/libs/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="/Kanbas/styles.css" />
+    <link rel="stylesheet" href="/Kanbas/Navigation/index.css" />
+</head>
+
+<body>
     <div class="p-4">
-      <h1>Dashboard</h1>
-      <hr />
-      <h2>Published Courses (7)</h2>
-      <hr />
-      <div class="row">
-        <div class="row row-cols-1 row-cols-md-5 g-4">
-          <div class="col" style="width: 300px">
-            <div class="card">
-              <img
-                src="/images/fs.jpg"
-                class="card-img-top"
-                style="height: 150px"
-              />
-              <div class="card-body" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                <a
-                  class="card-title"
-                  href="/Kanbas/Courses/Home/screen.html"
-                  style="text-decoration: none; color: navy; font-weight: bold"
-                >
-                  CS1234 React JS</a
-                >
-                <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Full Stack software developer</p>
-                <a html="#" class="btn btn-primary"> Go </a>
-              </div>
+        <script>
+            const courses = [
+                {
+                    title: "CS1234 React JS",
+                    description: "Full Stack software developer",
+                    image: "/assets/images/reactjs.jpg",
+                    link: "/Kanbas/Courses/Home/screen.html"
+                },
+                {
+                    title: "CS1234 React JS",
+                    description: "Full Stack software developer",
+                    image: "/assets/images/reactjs.jpg",
+                    link: "/Kanbas/Courses/Home/screen.html"
+                },
+                {
+                    title: "CS1234 React JS",
+                    description: "Full Stack software developer",
+                    image: "/assets/images/reactjs.jpg",
+                    link: "/Kanbas/Courses/Home/screen.html"
+                },
+                {
+                    title: "CS1234 React JS",
+                    description: "Full Stack software developer",
+                    image: "/assets/images/reactjs.jpg",
+                    link: "/Kanbas/Courses/Home/screen.html"
+                },
+                {
+                    title: "CS1234 React JS",
+                    description: "Full Stack software developer",
+                    image: "/assets/images/reactjs.jpg",
+                    link: "/Kanbas/Courses/Home/screen.html"
+                }
+            ];
+        </script>
+        <h1>Dashboard</h1>
+        <hr />
+        <h2>Published Courses (<script>
+                document.write(courses.length);
+            </script>)
+        </h2>
+        <hr />
+        <div class="row overflow-auto">
+            <div class="row row-cols-1 row-cols-md-5 g-4">
+                <script>
+                    courses.forEach(course => {
+                        document.write(`
+                            <div class="col" style="width: 300px">
+                                <div class="card">
+                                    <img src="${course.image}" class="card-img-top" style="max-height: 150px" />
+                                    <div class="card-body">
+                                        <a class="card-title" href="${course.link}" style="text-decoration: none; color: navy; font-weight: bold">
+                                            ${course.title}
+                                        </a>
+                                        <p class="card-text">${course.description}</p>
+                                        <a html="#" class="btn btn-primary"> Go </a>
+                                    </div>
+                                </div>
+                            </div>
+                    `);
+                    });
+                </script>
             </div>
-          </div>
-          <div class="col" style="width: 300px">
-            <div class="card">
-              <img
-                src="/images/dbms.jpg"
-                class="card-img-top"
-                style="height: 150px"
-              />
-              <div class="card-body" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                <a
-                  class="card-title"
-                  href="/Kanbas/Courses/Home/screen.html"
-                  style="text-decoration: none; color: navy; font-weight: bold"
-                >
-                  CS5200 DBMS </a
-                >
-                <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Database Management System</p>
-                <a html="#" class="btn btn-primary"> Go </a>
-              </div>
-            </div>
-          </div>
-          <div class="col" style="width: 300px">
-            <div class="card">
-              <img
-                src="/images/algo.jpg"
-                class="card-img-top"
-                style="max-height: 150px"
-              />
-              <div class="card-body" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                <a
-                  class="card-title"
-                  href="/Kanbas/Courses/Home/screen.html"
-                  style="text-decoration: none; color: navy; font-weight: bold"
-                >
-                  CS5800 Algorithms</a
-                >
-                <p class="card-text">Algorithms</p>
-                <a html="#" class="btn btn-primary"> Go </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col" style="width: 300px">
-            <div class="card">
-              <img
-                src="/images/pdp.jpg"
-                class="card-img-top"
-                style="height: 150px"
-              />
-              <div class="card-body" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                <a
-                  class="card-title"
-                  href="/Kanbas/Courses/Home/screen.html"
-                  style="text-decoration: none; color: navy; font-weight: bold"
-                >
-                  CS5010 PDP</a
-                >
-                <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Program Design Paradigms</p>
-                <a html="#" class="btn btn-primary"> Go </a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col" style="width: 300px">
-            <div class="card">
-              <img
-                src="/images/webdev.jpg"
-                class="card-img-top"
-                style="height: 150px"
-              />
-              <div class="card-body" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                <a
-                  class="card-title"
-                  href="/Kanbas/Courses/Home/screen.html"
-                  style="text-decoration: none; color: navy; font-weight: bold"
-                >
-                  CS5610 Web Development</a
-                >
-                <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Web Development</p>
-                <a html="#" class="btn btn-primary"> Go </a>
-              </div>
-            </div>
-          </div>
-          <div class="col" style="width: 300px">
-            <div class="card">
-              <img
-                src="/images/ood.jpg"
-                class="card-img-top"
-                style="height: 150px"
-              />
-              <div class="card-body" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                <a
-                  class="card-title"
-                  href="/Kanbas/Courses/Home/screen.html"
-                  style="text-decoration: none; color: navy; font-weight: bold"
-                >
-                  CS3200 OOD</a
-                >
-                <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Object Oriented Design</p>
-                <a html="#" class="btn btn-primary"> Go </a>
-              </div>
-            </div>
-          </div>
-          <div class="col" style="width: 300px">
-            <div class="card">
-              <img
-                src="/images/fse.jpg"
-                class="card-img-top"
-                style="height: 150px"
-              />
-              <div class="card-body" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                <a
-                  class="card-title"
-                  href="/Kanbas/Courses/Home/screen.html"
-                  style="text-decoration: none; color: navy; font-weight: bold"
-                >
-                  CS5500 FSE</a
-                >
-                <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" class="card-text">Foundation of Software Engineering</p>
-                <a html="#" class="btn btn-primary"> Go </a>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </body>
+</body>
+
 </html>

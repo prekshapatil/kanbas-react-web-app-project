@@ -1,139 +1,234 @@
-import { courses } from "../../Kanbas/Database";
-import {
-  useParams,
-  Link,
-  useLocation,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-import { HiMiniBars3 } from "react-icons/hi2";
+import { Link, Navigate, Route, Routes } from "react-router-dom";
 import CourseNavigation from "./Navigation";
-import "./index.css";
+import Navigation from "../Navigation";
 import Modules from "./Modules";
-import StudentView from "./StudentView";
 import Home from "./Home";
 import Assignments from "./Assignments";
-import AssignmentEditor from "./Assignments/Editor";
+import Editor from "./Assignments/Editor";
 import Grades from "./Grades";
-import { useState, useEffect } from "react";
+import './index.css';
+import { HiMiniBars3 } from "react-icons/hi2";
+import { FaCaretDown } from "react-icons/fa";
+import { useParams } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import Collapse from 'react-bootstrap/Collapse';
+import { useEffect, useState } from "react";
 import axios from "axios";
-import Quiz from "./Quizzes";
-import QuizEditor from "./Quizzes/QuizEditor";
-import QuestionEditor from "./Quizzes/QuizEditor/Questions/QuestionEditor";
+import { createContext } from "react";
 import Quizzes from "./Quizzes";
-import Details from "./Quizzes/QuizEditor/Details";
+import QuizDetails from "./Quizzes/QuizDetails";
+import QuizEditor from "./Quizzes/QuizEditor";
+import NewQuestion from "./Quizzes/QuizEditor/QuizEditorQuestion/NewQuestion";
 import QuizPreview from "./Quizzes/QuizPreview";
-import QuizDetail from "./Quizzes/QuizDetail";
+import QuizPreviewResult from "./Quizzes/QuizPreviewResult";
 
-function Courses() {
-  const { courseId } = useParams();
-  const { pathname } = useLocation();
-  const API_BASE = process.env.REACT_APP_API_BASE
+const API_BASE = process.env.REACT_APP_API_BASE;
 
-  const COURSES_API = `${API_BASE}/api/courses`;
-  const [course, setCourse] = useState<any>({ _id: "", number: "" });
-  const findCourseById = async (courseId?: string) => {
-    const response = await axios.get(`${COURSES_API}/${courseId}`);
-    setCourse(response.data);
-  };
-
-  const [slash, kanbas, cour, id, screen, p, quiz] = pathname.split("/");
-  console.log(pathname);
-  let isAssignmentScreen = false;
-  let isQuizScreen = false;
-  if (screen === 'Assignments') {
-    isAssignmentScreen = p ? true : false;
+export const CourseNavContext = createContext(
+  {
+    openMobileCourseNav: false,
+    setOpenMobileCourseNav: (value: boolean) => { }
   }
-  if (screen === 'Quizzes') {
-    isQuizScreen = p ? true : false;
-  }
-  
-  //const isQuizScreen = quiz ? true : false;
-  useEffect(() => {
-    findCourseById(courseId);
-  }, [courseId]);
+);
 
-  //const course = courses.find((course) => course._id === courseId);
-  const isStudentView = screen === "Home" || screen === "Modules" || screen == "Quizzes";
+const AssignmentId = ({
+  courseId
+}: {
+  courseId: any;
+}) => {
+  const { assignmentId } = useParams();
 
   return (
     <>
-      <div className="d-flex justify-content-between">
-        <div className="d-flex wd-nav-div-margin">
-          <h5>
-            <HiMiniBars3 color="red" />{" "}
-          </h5>
+      <span className="d-none d-md-inline  ">
+        <Link to={
+          `/kanbas/courses/${courseId}/Assignments`
+        }>
+          Assignments
+        </Link> / {assignmentId}
+      </span>
+      <span className="d-md-none d-block">
+        Assignments / {assignmentId}
+      </span>
+    </>
+  );
+}
 
-          <nav className="wd-nav-style" aria-label="breadcrumb">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item wd-top-bar">
-                <Link
-                  style={{
-                    marginTop: "3px",
-                    marginLeft: "2px",
-                    textDecoration: "none",
-                    paddingTop: "10px",
-                    color: "red",
-                  }}
-                  to={`/Kanbas/Courses/${courseId}/Home`}
-                >
-                  {course?.number}{" "}
+function Courses() {
+
+  const [openMobileCourseNav, setOpenMobileCourseNav] = useState(false);
+  const [openMobileMainNav, setOpenMobileMainNav] = useState(false);
+  const { courseId } = useParams();
+  const COURSES_API = `${API_BASE}/api/courses`;
+  const [course, setCourse] = useState<any>({ _id: "" });
+  // const findCourseById = async (courseId?: string) => {
+  //     const response = await axios.get(
+  //         `${COURSES_API}/${courseId}`
+  //     );
+  //     setCourse(response.data);
+  // };
+  useEffect(() => {
+    const findCourseById = async (courseId?: string) => {
+      const response = await axios.get(
+        `${COURSES_API}/${courseId}`
+      );
+      console.log(response.data);
+      setCourse(response.data);
+    };
+    findCourseById(courseId);
+  }, [courseId, COURSES_API]);
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (width > 768) {
+      setOpenMobileCourseNav(false);
+      setOpenMobileMainNav(false);
+    }
+  }, [width]);
+
+  return (
+    <div className="p-md-4 p-0 h-100 ">
+      <div className="">
+        <div className="bc p-2 d-md-flex flex-row gap-4 align-items-center d-none ">
+          <HiMiniBars3 />
+          <nav aria-label="breadcrumb">
+            <ol
+              className="breadcrumb
+                        m-0
+                        "
+            >
+              <li className="prime breadcrumb-item m-0 ">
+                <Link to={`/kanbas/courses/${course?._id}`}>
+                  {course?.number}
                 </Link>
               </li>
-              {isAssignmentScreen ? (
-      <>
-        <li className="breadcrumb-item wd-top-bar">
-          <Link
-            style={{
-              marginTop: "3px",
-              marginLeft: "2px",
-              textDecoration: "none",
-              paddingTop: "10px",
-              color: "red",
-            }}
-            to={`/Kanbas/Courses/${courseId}/Assignments`}
-          >
-            Assignments{" "}
-          </Link>
-        </li>
-        <li className="breadcrumb-item wd-top-bar">{p}</li>
-      </>
-    ) : isQuizScreen ? (
-      <>
-        <li className="breadcrumb-item wd-top-bar">
-          <Link
-            style={{
-              marginTop: "3px",
-              marginLeft: "2px",
-              textDecoration: "none",
-              paddingTop: "10px",
-              color: "red",
-            }}
-            to={`/Kanbas/Courses/${courseId}/Quizzes`}
-          >
-            Quizzes{" "}
-          </Link>
-        </li>
-        <li className="breadcrumb-item wd-top-bar">{p}</li>
-      </>
-    ) : (
-      <li className="breadcrumb-item active wd-top-bar-text">
-        {decodeURIComponent(screen)}
-      </li>
-    )}
+              <li className="breadcrumb-item active" aria-current="page">
+                <Routes>
+                  <Route path="/" element={<Navigate to="Home" />} />
+                  <Route path="Home" element={<span>Home</span>} />
+                  <Route path="Modules" element={<span>Modules</span>} />
+                  <Route path="Piazza" element={<span>Piazza</span>} />
+                  <Route
+                    path="Assignments"
+                    element={<span>Assignments</span>}
+                  />
+                  <Route
+                    path="Assignments/:assignmentId"
+                    element={<AssignmentId courseId={courseId} />}
+                  />
+                  <Route path="Grades" element={<span>Grades</span>} />
+                  <Route path="Quizzes" element={<span>Quizzes</span>} />
+                  <Route path="Quizzes/:quizId/details" element={<span>Quiz Details</span>} />
+                  <Route path="Quizzes/:quizId/editor" element={<span>Quiz Editor</span>} />
+                  <Route path="Quizzes/:quizId/editor/:questionId" element={<span>Quiz Editor / Question Editor</span>} />
+                </Routes>
+              </li>
             </ol>
           </nav>
         </div>
-
-        {isStudentView && <StudentView />}
+        <div className="d-md-none d-flex flex-row justify-content-between align-items-center bg-black text-white px-4">
+          <Button
+            onClick={() => {
+              setOpenMobileMainNav(!openMobileMainNav);
+              setOpenMobileCourseNav(false);
+            }}
+            aria-controls="mobile-main-nav"
+            aria-expanded={openMobileMainNav}
+            className="bg-transparent border-0 text-white"
+          >
+            <HiMiniBars3 />
+          </Button>
+          <div className="p-2">
+            <h6
+              className="m-0"
+              style={{
+                textAlign: "center",
+              }}
+            >
+              {course?.number}
+              <br />
+              <Routes>
+                <Route path="/" element={<Navigate to="Home" />} />
+                <Route path="Home" element={<span>Home</span>} />
+                <Route path="Modules" element={<span>Modules</span>} />
+                <Route path="Piazza" element={<span>Piazza</span>} />
+                <Route
+                  path="Assignments"
+                  element={<span>Assignments</span>}
+                />
+                <Route
+                  path="Assignments/:assignmentId"
+                  element={<AssignmentId courseId={courseId} />}
+                />
+                <Route path="Grades" element={<span>Grades</span>} />
+                <Route path="Quizzes" element={<span>Quizzes</span>} />
+                <Route path="Quizzes/:quizId/details" element={<span>Quiz Details</span>} />
+                <Route path="Quizzes/:quizId/editor" element={<span>Quiz Editor</span>} />
+                <Route path="Quizzes/:quizId/editor/:questionId" element={<span>Quiz Editor / Question Editor</span>} />
+              </Routes>
+            </h6>
+          </div>
+          <div>
+            <Button
+              onClick={() => {
+                setOpenMobileCourseNav(!openMobileCourseNav);
+                setOpenMobileMainNav(false);
+              }}
+              aria-controls="mobile-course-nav"
+              aria-expanded={openMobileCourseNav}
+              className="bg-transparent border-0 text-white"
+            >
+              <FaCaretDown />
+            </Button>
+          </div>
+        </div>
+        <hr className="d-none d-md-block" />
       </div>
-      <hr />
-      <CourseNavigation />
-      <div>
+      <CourseNavContext.Provider
+        value={{
+          openMobileCourseNav,
+          setOpenMobileCourseNav,
+        }}
+      >
+        <Collapse in={openMobileCourseNav}>
+          <div id="mobile-course-nav">
+            <CourseNavigation />
+          </div>
+        </Collapse>
+        <Collapse in={openMobileMainNav}>
+          <div id="mobile-main-nav">
+            <Navigation />
+          </div>
+        </Collapse>
+      </CourseNavContext.Provider>
+      <div
+        className={
+          openMobileCourseNav || openMobileMainNav
+            ? "d-none"
+            : " d-flex flex-row p-2 gap-4"
+        }
+      >
         <div
-          className="overflow-y-scroll position-fixed bottom-0 end-0"
-          style={{ left: "320px", top: "70px" }}
+          className="
+                d-none d-md-block
+                "
+        >
+          <CourseNavigation />
+        </div>
+        <div
+          className="flex-grow-1 w-md-100 w-50"
+          style={{ left: "320px", top: "50px", height: "100%" }}
         >
           <Routes>
             <Route path="/" element={<Navigate to="Home" />} />
@@ -141,32 +236,19 @@ function Courses() {
             <Route path="Modules" element={<Modules />} />
             <Route path="Piazza" element={<h1>Piazza</h1>} />
             <Route path="Assignments" element={<Assignments />} />
-            <Route
-              path="Assignments/:assignmentId"
-              element={<AssignmentEditor />}
-            />
+            <Route path="Assignments/:assignmentId" element={<Editor />} />
             <Route path="Grades" element={<Grades />} />
-            <Route path="Zoom Meetings" element={<h1>Zoom Meetings</h1>} />
-            <Route path="Quizzes" element={<Quiz />} />
-            <Route path="Quizzes/:quizId/QuizEditor/*" element={<QuizEditor/>} />
-            <Route path="Quizzes/:quizId/QuizEditor/questions/:questionId" element={<QuestionEditor/>} />
-            <Route path="Quizzes/:quizId" element={<QuizDetail/>} />
-            <Route path="Quizzes/:quizId/QuizPreview" element={<QuizPreview/>} />
-            <Route path="People" element={<h1>People</h1>} />
-            <Route path="Panopto Video" element={<h1>Panopto Video</h1>} />
-            <Route path="Pages" element={<h1>Pages</h1>} />
-            <Route path="Files" element={<h1>Files</h1>} />
-            <Route path="Rubrics" element={<h1>Rubrics</h1>} />
-            <Route path="Outcomes" element={<h1>Outcomes</h1>} />
-            <Route path="Collaborations" element={<h1>Collaborations</h1>} />
-            <Route path="Syllabus" element={<h1>Syllabus</h1>} />
-            <Route path="Settings" element={<h1>Settings</h1>} />
-            <Route path="Discussions" element={<h1>Discussions</h1>} />
-            <Route path="Announcements" element={<h1>Announcements</h1>} />
+            <Route path="Quizzes" element={<Quizzes />} />
+            <Route path="Quizzes/:quizId/details" element={<QuizDetails />} />
+            <Route path="Quizzes/:quizId/editor" element={<QuizEditor />} />
+            <Route path="Quizzes/:quizId/editor/:questionId" element={<NewQuestion />} />
+            <Route path="Quizzes/:quizId/preview" element={<QuizPreview />} />
+            <Route path="Quizzes/:quizId/preview/results" element={<QuizPreviewResult />} />
           </Routes>
         </div>
       </div>
-    </>
+    </div>
   );
 }
+
 export default Courses;

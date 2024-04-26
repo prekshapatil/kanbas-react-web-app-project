@@ -1,183 +1,147 @@
-import React, { useEffect } from "react";
 import {
-  FaCheckCircle,
-  FaEllipsisV,
-  FaPencilAlt,
-  FaPlus,
-  FaPlusCircle,
-  FaEdit,
+    FaCheckCircle, FaEllipsisV, FaPlusCircle,
+    FaList, FaCaretDown, FaPlus, FaTrash, FaPen
 } from "react-icons/fa";
-import { useNavigate, Link, useParams } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+import { Link, useParams } from "react-router-dom";
+import "./index.css"
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  addAssignment,
-  setAssignment,
-  clearAssignment,
-  deleteAssignment,
-  setAssignments,
-} from "./reducer";
-import { KanbasState } from "./../../store";
-import * as service from "./service";
+import { deleteAssignment } from "./reducer";
+import { KanbasState } from "../../store";
+import { useState } from "react";
+import { setAssignments } from "./reducer";
+import * as client from "./client";
 
 function Assignments() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const navigateToAddAssignemnt = () => {
-    dispatch(clearAssignment());
-    navigate(`/Kanbas/Courses/${courseId}/Assignments/AssignmentEditor`);
-  };
 
-  const handleDelete = () => {
-    const result = window.confirm(
-      "Are you sure you want to delete this Assignment?"
-    );
-    if (result) {
-      return true;
-    } else {
-      return false;
+    const { courseId } = useParams();
+    const [showPopup, setShowPopup] = useState(false);
+    const [assignmentToBeDeleted, setAssignmentToBeDeleted] = useState("");
+    const assignmentList = useSelector((state: KanbasState) =>
+        state.assignmentReducer.assignments);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        client.findAssignmentsForCourse(courseId)
+            .then((assignments) => {
+                dispatch(setAssignments(assignments));
+            });
+    }, [courseId, dispatch]);
+    const handleDeleteAssignment = (assignmentId: string) => {
+        client.deleteAssignment(assignmentId).then(() => {
+            dispatch(deleteAssignment(assignmentId));
+        });
     }
-  };
-  const assignment = useSelector(
-    (state: KanbasState) => state.assignmentReducer.assignment
-  );
 
-  const handleDeleteAssignment = async (assignmentId: string) => {
-    const res = await service.deleteAssignment(assignmentId);
-    dispatch(deleteAssignment(assignmentId));
-  };
-
-  const { courseId } = useParams();
-  const assignmentList = useSelector(
-    (state: KanbasState) => state.assignmentReducer.assignments
-  );
-
-  useEffect(() => {
-    service.findAssignmentForCourse(courseId).then((assignments) => {
-      dispatch(setAssignments(assignments));
-    });
-  }, [courseId]);
-
-  console.log(assignmentList);
-
-  return (
-    <>
-      <div className="col me-2">
-        <div className="row wd-margin-top">
-          <div className="float-end wd-margin-right">
-            <div className="wd-button float-end">
-              <a
-                className="btn btn-secondary btn-sm"
-                role="button"
-                style={{ backgroundColor: "lightgray" }}
-              >
-                <FaEllipsisV />
-              </a>
-            </div>
-            <div className="wd-button float-end">
-              <Button variant="danger btn-sm" onClick={navigateToAddAssignemnt}>
-                <FaPlus className="me-1" />
-                Assignment
-              </Button>{" "}
-            </div>
-
-            <div className="wd-button float-end">
-              <Button
-                variant="secondary btn-sm"
-                style={{ backgroundColor: "lightgray" }}
-              >
-                <FaPlus className="me-1" />
-                Group
-              </Button>{" "}
-            </div>
-            <div className="float-start w-25">
-              <input
-                className="form-control"
-                id="input1"
-                placeholder="Search for Assignment"
-              />
-            </div>
-          </div>
-        </div>
-        <hr />
-        <div className="wd-assignments-list">
-          <ul
-            className="list-group wd-margin-left"
-            style={{ borderRadius: "0%" }}
-          >
-            <li className="list-group-item list-group-item-secondary">
-              <div>
-                <FaEllipsisV className="me-2" />
-                <b>ASSIGNMENTS</b>
-                <span className="float-end">
-                  <label
-                    className="form-label pe-2 ps-2 me-3"
-                    style={{
-                      borderRadius: "50px",
-                      borderWidth: "1px",
-                      borderStyle: "solid",
-                    }}
-                  >
-                    40% of Total
-                  </label>
-                  <FaCheckCircle className="text-success" />
-                  <FaPlusCircle className="ms-2" />
-                  <FaEllipsisV className="ms-2" />
-                </span>
-              </div>
-            </li>
-            <ul className="list-group" style={{ borderRadius: "0%" }}>
-              {assignmentList.map((assignment) => (
-                <li className="list-group-item">
-                  <div className="row">
-                    <div
-                      className="col-auto"
-                      style={{ margin: "auto", display: "flex" }}
-                    >
-                      <FaEllipsisV
-                        style={{ verticalAlign: "middle", marginRight: "10px" }}
-                      />
-                      <FaEdit style={{ color: "green" }} />
-                    </div>
-                    <div className="col wd-fg-color-gray ps-0 ms-2">
-                      <Link
-                        onClick={(e) => dispatch(setAssignment(assignment))}
-                        style={{ color: "green", textDecoration: "none" }}
-                        className="fw-bold ps-0"
-                        to={`/Kanbas/Courses/${courseId}/Assignments/${assignment._id}`}
-                      >
-                        {assignment.title}
-                      </Link>
-                      <br />
-                      {assignment.description} |
-                      <br />
-                      <b>Due</b> {assignment.dueDateTime} | {assignment.points}
-                    </div>
-                    <div
-                      className="col-auto"
-                      style={{ margin: "auto", display: "flex" }}
-                    >
-                      <button
-                        className="btn m-0 pt-0 pb-0 me-1 btn-danger btn-sm"
+    return (
+        <>
+            <div className={
+                `popupwindow ${showPopup ? "d-flex" : "d-none"}`
+            }>
+                <div className="popupbox-container">
+                    <h5>
+                        Confirmation
+                    </h5>
+                    <p>
+                        Are you sure you want to delete this assignment?
+                    </p>
+                    <div className="d-flex flex-row justify-content-end gap-2">
+                        <button className="btn btn-secondary"
+                        onClick={() => setShowPopup(!showPopup)}>
+                            Cancel
+                        </button>
+                        <button className="btn btn-danger"
                         onClick={() => {
-                          if (handleDelete()) {
-                            handleDeleteAssignment(assignment._id);
-                          }
-                        }}
-                      >
-                        Delete
-                      </button>
-                      <FaCheckCircle style={{ color: "green" }} />
-                      <FaEllipsisV style={{ verticalAlign: "middle" }} />
+                            // dispatch(deleteAssignment(assignmentToBeDeleted));
+                            handleDeleteAssignment(assignmentToBeDeleted);
+                            setShowPopup(!showPopup);
+                        }}>
+                            Delete
+                        </button>
                     </div>
-                  </div>
+                </div>
+            </div>
+            <div className="d-flex flex-md-row flex-column justify-content-start justify-content-md-between align-items-md-center align-items-start gap-4 ">
+                <input className="assignment-search-input" type="text" placeholder="Search for Assignments" />
+                <div className="assiginments-button-grp d-flex gap-2 ">
+                    <button className="p-2 px-4">
+                        <FaPlus />
+                        Group
+                    </button>
+                    <Link className="text-decoration-none" to={`/Kanbas/courses/${courseId}/Assignments/newAssignment`}>
+                        <button className="add-assignment p-2 px-4">
+                            <FaPlus />
+                            Assignment
+                        </button>
+                    </Link>
+                    <button className="p-2">
+                        <FaEllipsisV />
+                    </button>
+                </div>
+            </div>
+            <hr />
+            {/* {< !--Add buttons and other fields here -->} */}
+            <ul className="list-group wd-modules">
+                <li className="list-group-item" key={0}>
+                    <div className="d-flex flex-row justify-content-between align-items-center p-2">
+                        <div className="d-flex flex-row justify-content-between align-items-center gap-2">
+                            <FaEllipsisV />
+                            <FaCaretDown />
+                            <h3 className="fs-5 fw-bold ">
+                                Assignments
+                            </h3>
+                        </div>
+                        <span className="float-end d-flex justify-content-center align-items-center gap-2">
+                            <div className="
+                                            p-2
+                                            border
+                                            border-1
+                                            rounded-4
+                                            ">
+                                40% of Total
+                            </div>
+                            <FaCheckCircle className="text-success" />
+                            <FaPlusCircle />
+                            <FaEllipsisV />
+                        </span>
+                    </div>
+
+                    <ul className="list-group">
+                        {assignmentList
+                            .filter((assignment) => assignment.course === courseId)
+                            .map((assignment, index) => (
+                                <li className="d-flex flex-row flex-grow-1 w-100 justify-content-between align-items-center p-2 px-2 bg-white " key={index}>
+                                    <div className="d-flex flex-row justify-content-center align-items-center gap-4">
+                                        <FaEllipsisV />
+                                        <FaList />
+                                        <div className="assignment-title-link d-flex flex-column">
+                                            <Link to={`/Kanbas/courses/${courseId}/Assignments/${assignment._id}`}>{assignment.title}</Link>
+                                            <span>{
+                                                assignment.due ? "Due " + assignment.due : "No due date"
+                                            } | {assignment.points ? assignment.points : "N/A"} pts </span>
+                                        </div>
+                                    </div>
+                                    <span className="d-flex flex-row gap-3 align-items-center ">
+                                        <FaCheckCircle className="text-success" />
+                                        <Link to={`/kanbas/courses/${courseId}/Assignments/${assignment._id}`} className="text-black">
+                                            <FaPen />
+                                        </Link>
+                                        <FaTrash onClick={
+                                            () => {
+                                                setShowPopup(!showPopup);
+                                                setAssignmentToBeDeleted(assignment._id);
+                                            }
+                                        } style={{
+                                            cursor: "pointer"
+                                        }} />
+                                    </span>
+                                </li>
+                            ))
+                        }
+                    </ul>
                 </li>
-              ))}
             </ul>
-          </ul>
-        </div>
-      </div>
-    </>
-  );
+        </>
+    );
 }
+
 export default Assignments;

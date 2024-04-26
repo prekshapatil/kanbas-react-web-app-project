@@ -1,14 +1,16 @@
 import ModuleList from "../Modules/List";
-// import Status from "./Status";
+import StatusBar from "./Components/StatusBar";
+import "./index.css";
+
 function Home() {
-  return (
-    <div>
-      
-      <div className="d-flex justify-content-between">
-        <ModuleList />
-        {/* <Status /> */}
-      </div>
-    </div>
-  );
+    return (
+        <div className="
+        d-flex flex-row flex-grow-1 gap-4
+        ">
+            <ModuleList />
+            <StatusBar />
+        </div>
+    );
 }
+
 export default Home;

@@ -1,15 +1,22 @@
-function ArrayIndexAndLength() {
-  let numberArray1 = [1, 2, 3, 4, 5];
-  const length1 = numberArray1.length;
-  const index1 = numberArray1.indexOf(3);
+import React from 'react'
 
-  return (
-    <>
-      <h2>Array index and length</h2>
-      length1 = {length1}<br/>
-      index1 = {index1}
-    </>
-  );
+const ArrayIndexAndLength = () => {
+    let numberArray1 = [1, 2, 3, 4, 5];
+    const length1 = numberArray1.length;
+    const index1 = numberArray1.indexOf(3)
+    return (
+        <>
+            <h1>
+                Array Index and Length
+            </h1>
+            <p>
+                length1 = {length1}
+            </p>
+            <p>
+                index1 = {index1}
+            </p>
+        </>
+    );
 }
 
 export default ArrayIndexAndLength

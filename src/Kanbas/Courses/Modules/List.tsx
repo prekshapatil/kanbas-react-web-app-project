@@ -1,242 +1,172 @@
-import React, { useState, useEffect } from "react";
 import "./index.css";
-import { modules } from "../../Database";
 import {
-  FaEllipsisV,
-  FaCheckCircle,
-  FaPlusCircle,
-  FaBan,
-  FaBell,
-  FaCalendarCheck,
-  FaCaretRight,
-  FaChartBar,
-  FaCrosshairs,
-  FaEllipsisH,
-  FaFileImport,
-  FaNewspaper,
-  FaPlus,
+    FaEllipsisV, FaCheckCircle,
+    FaPlusCircle, FaPlus,
+    FaPencilAlt, FaTrash
 } from "react-icons/fa";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
-import * as client from "./client";
-
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import {
-  addModule,
-  deleteModule,
-  updateModule,
-  setModule,
-  setModules,
+    addModule,
+    deleteModule,
+    updateModule,
+    setModule,
+    setModules
 } from "./reducer";
+import * as client from "./client";
 import { KanbasState } from "../../store";
+import { findModulesForCourse, createModule } from "./client";
 
 function ModuleList() {
-  const { courseId } = useParams();
 
-  useEffect(() => {
-    client.findModulesForCourse(courseId).then((modules) =>
-      dispatch(setModules(modules))
-    );
-  }, [courseId]);
+    const { courseId } = useParams();
+    console.log("Course ID: ", courseId);
+    const moduleList = useSelector((state: KanbasState) =>
+        state.modulesReducer.modules);
+    const module = useSelector((state: KanbasState) =>
+        state.modulesReducer.module);
+    const dispatch = useDispatch();
+    const handleAddModule = () => {
+        createModule(courseId, module).then((module) => {
+          dispatch(addModule(module));
+        });
+    };
+    const handleDeleteModule = (moduleId: string) => {
+        console.log("Module ID: ", moduleId);
+        client.deleteModule(moduleId).then(() => {
+          dispatch(deleteModule(moduleId));
+        });
+    };
+    const handleUpdateModule = async () => {
+        const status = await client.updateModule(module);
+        if (status) {}
+        dispatch(updateModule(module));
+    };
+    useEffect(() => {
+        findModulesForCourse(courseId)
+          .then((modules) =>{
+            console.log("Modules", modules);
+            dispatch(setModules(modules));
+          }
+        );
+    }, [courseId, dispatch]);
 
-  const handleAddModule = () => {
-    client.createModule(courseId, module).then((module) => {
-      dispatch(addModule(module));
-    });
-  };
+    return (
+        <>
+            <div className="
+            flex-grow-1
+            ">
+                <div id="main-button-group" className="d-flex flex-row justify-content-end gap-2">
+                    <button className="p-2">Collapse All</button>
+                    <button className="p-2">View Progress</button>
+                    <select name="Publish" id="Publish" className="p-2">
+                        <option value="Publish All" selected>Publish All</option>
+                        <option value="Publish">Publish</option>
+                        <option value="Unpublish">Unpublish</option>
+                    </select>
+                    <button className="bg-danger text-white p-2 ">
+                        <FaPlus />
+                        Module
+                    </button>
+                    <button className="p-2">
+                        <FaEllipsisV />
+                    </button>
+                </div>
+                <hr />
+                <div className="
+                d-flex
+                flex-column
+                justify-content-between
+                align-items-start
+                gap-2
+                p-2
+                w-50
+                ">
+                    <h5>Module Editor</h5>
+                    <input
+                        className="form-control"
+                        value={module.name}
+                        onChange={(e) =>
+                            dispatch(setModule({ ...module, name: e.target.value }))
+                        } />
+                    <textarea
+                        className="form-control"
+                        value={module.description}
+                        onChange={(e) =>
+                            dispatch(setModule({ ...module, description: e.target.value }))
+                        } />
+                    <div className="w-50 d-flex flex-row
+                    justify-content-start gap-2 align-items-center">
+                        <button className="btn btn-success " 
+                            onClick={handleAddModule}>
+                            Add
+                        </button>
+                        <button className="btn btn-primary " 
+                            onClick={handleUpdateModule}>
+                            Update
+                        </button>
+                    </div>
+                </div>
 
-  const handleDeleteModule = (moduleId: string) => {
-    client.deleteModule(moduleId).then((status) => {
-      dispatch(deleteModule(moduleId));
-    });
-  };
-
-  const handleUpdateModule = async () => {
-    const status = await client.updateModule(module);
-    dispatch(updateModule(module));
-  };
-
-
-
-  const moduleList = useSelector(
-    (state: KanbasState) => state.modulesReducer.modules
-  );
-  const module = useSelector(
-    (state: KanbasState) => state.modulesReducer.module
-  );
-  const dispatch = useDispatch();
-
-  const [selectedModule, setSelectedModule] = useState(moduleList[0]);
-
-  return (
-    <div className="flex-fill">
-      <div className="d-flex justify-content-end">
-        <Link
-          to={"#"}
-          className="btn btn-secondary btn-sm wd-button wd-btn-color"
-        >
-          Collapse All
-        </Link>
-
-        <Link
-          to={"#"}
-          className="wd-btn-color btn btn-secondary btn-sm wd-button"
-          role="button"
-        >
-          View Progress
-        </Link>
-
-        <div className="dropdown">
-          <Link
-            to={"#"}
-            className="btn btn-secondary btn-sm dropdown-toggle wd-button wd-btn-color"
-            role="button"
-            id="dropdownMenuLink"
-            data-bs-toggle="dropdown"
-          >
-            <FaCheckCircle />
-            Publish All
-          </Link>
-
-          <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <li>
-              <Link to={"#"} className="dropdown-item">
-                None
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        <Link to={"#"} className="btn btn-danger btn-sm" role="button">
-          <FaPlus />
-          Modules
-        </Link>
-
-        <Link
-          to={"#"}
-          className="btn btn-secondary btn-sm wd-button wd-btn-color"
-          role="button"
-        >
-          <FaEllipsisV />
-        </Link>
-      </div>
-      <hr />
-      <ul className="list-group wd-modules">
-        <li className="list-group-item">
-          <div className="d-flex">
-            <div>
-              <input
-                value={module.name}
-                className="form-group"
-                onChange={(e) =>
-                  dispatch(setModule({ ...module, name: e.target.value }))
-                }
-              />
-            </div>
-            <div style={{ marginLeft: "5px" }}>
-              <button
-                className="btn btn-danger btn-sm me-1"
-                onClick={handleAddModule
-                }
-              >
-                Add
-              </button>
-              <button
-                className="btn btn-primary btn-sm"
-                onClick={handleUpdateModule}
-              >
-                Update
-              </button>
-            </div>
-          </div>
-          <div className="ml-2">
-            <textarea
-              value={module.description}
-              className="form-group"
-              onChange={(e) =>
-                dispatch(setModule({ ...module, description: e.target.value }))
-              }
-            />
-          </div>
-        </li>
-
-        {moduleList
-          .filter((module) => module?.course === courseId)
-
-          .map((module, index) => (
-            <li
-              key={index}
-              className="list-group-item"
-              onClick={() => setSelectedModule(module)}
-            >
-              <div>
-                <FaEllipsisV className="me-2" />
-                {module.name}
-                <span className="float-end">
-                  <button
-                    style={{
-                      marginRight: "5px",
-                      backgroundColor: "red",
-                      borderRadius: "3px",
-                      width: "55px",
-                      color: "white",
-                    }}
-                    onClick={() => handleDeleteModule(module._id)}
-                  >
-                    Delete
-                  </button>
-
-                  <button
-                    style={{
-                      marginRight: "5px",
-                      backgroundColor: "green",
-                      borderRadius: "3px",
-                      width: "55px",
-                      color: "white",
-                    }}
-                    onClick={() => dispatch(setModule(module))}
-                  >
-                    Edit
-                  </button>
-
-                  <FaCheckCircle className="text-success" />
-                  <FaPlusCircle className="ms-2" />
-                  <FaEllipsisV className="ms-2" />
-                </span>
-              </div>
-              {selectedModule?._id === module?._id && (
-                <ul className="list-group">
-                  {module.lessons?.map(
-                    (lesson: {
-                      name:
-                        | string
-                        | number
-                        | boolean
-                        | React.ReactElement<
-                            any,
-                            string | React.JSXElementConstructor<any>
-                          >
-                        | Iterable<React.ReactNode>
-                        | React.ReactPortal
-                        | null
-                        | undefined;
-                    }) => (
-                      <li className="list-group-item">
-                        <FaEllipsisV className="me-2" />
-                        {lesson.name}
-                        <span className="float-end">
-                          <FaCheckCircle className="text-success" />
-                          <FaEllipsisV className="ms-2" />
-                        </span>
-                      </li>
-                    )
-                  )}
+                <hr />
+                {/* <!-- Add buttons here --> */}
+                <ul className="list-group wd-modules">
+                    {moduleList
+                        .filter((module) => module.course === courseId)
+                        .map((module, index) => (
+                            <li
+                                className="list-group-item"
+                                onClick={() => dispatch(setModule(module))}>
+                                <div>
+                                    <FaEllipsisV className="me-2" />
+                                    {module.name}
+                                    <span className="float-end
+                                    d-flex flex-row gap-2 align-items-center
+                                    ">
+                                        <FaCheckCircle className="text-success" />
+                                        <FaPlusCircle className="ms-2" />
+                                        <FaEllipsisV className="ms-2" />
+                                        <div className="
+                                        modules-button-group
+                                        d-flex
+                                        flex-row
+                                        justify-content-between
+                                        align-items-center
+                                        gap-2
+                                        fs-6
+                                        ">
+                                            <button
+                                                className="btn btn-primary"
+                                                onClick={() => dispatch(setModule(module))}>
+                                                <FaPencilAlt />
+                                            </button>
+                                            <button
+                                                className="btn btn-danger"
+                                                onClick={() => handleDeleteModule(module._id)}>
+                                                <FaTrash />
+                                            </button>
+                                        </div>
+                                    </span>
+                                </div>
+                                <ul className="list-group">
+                                    {module.lessons?.map((lesson: any) => (
+                                        <li className="list-group-item">
+                                            <FaEllipsisV className="me-2" />
+                                            {lesson.name}
+                                            <span className="float-end">
+                                                <FaCheckCircle className="text-success" />
+                                                <FaEllipsisV className="ms-2" />
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </li>
+                        ))}
                 </ul>
-              )}
-            </li>
-          ))}
-      </ul>
-    </div>
-  );
+            </div>
+        </>
+    );
 }
+
 export default ModuleList;

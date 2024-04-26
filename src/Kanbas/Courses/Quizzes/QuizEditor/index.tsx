@@ -1,118 +1,218 @@
-import { Routes, Route, Navigate, useParams, useNavigate } from "react-router";
-import Nav from "./nav";
-import QuizQuestion from "./Questions";
-import QuizDetail from "./Details";
-import QuestionEditor from "./Questions/QuestionEditor";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import QuizEditorDetails from "./QuizEditorDetails";
+import QuizEditorQuestion from "./QuizEditorQuestion";
+import { FaEllipsisV } from "react-icons/fa";
+import '../index.css'
+import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { KanbasState } from "../../../store";
-import { addQuiz, updateQuiz, clearQuiz, setQuiz } from "../reducer";
-import Quiz from "../..";
 import * as client from "../client";
-import * as questionsClient from "./Questions/client";
-import { Button } from "react-bootstrap";
-import { useEffect } from "react";
+import { setQuiz, setQuestions } from "../reducer";
 
 function QuizEditor() {
-  const { quizId } = useParams();
-  const isAddNew = quizId === "QuizDetail";
-  const { courseId } = useParams();
-  const navigate = useNavigate();
-  const quiz = useSelector((state: KanbasState) => state.quizReducer.quiz);
 
-  const questionList = useSelector(
-    (state: KanbasState) => state.questionsReducer.questions
-  );
+    const { quizId } = useParams();
+    const { courseId } = useParams();
+    const navigate = useNavigate();
 
-  const textBox = useSelector(
-    (state: KanbasState) => state.textBoxReducer.textBox
-  );
-  const handleSave = async () => {
-    console.log(textBox.text);
-    handleUpdate();
-    await updateQuestions();
-    navigate(`/Kanbas/Courses/${courseId}/quizzes`);
-  };
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(setQuiz({ ...quiz, instructions: textBox.text }));
-  }, [textBox]);
-  const updateQuestions = async () => {
-    const res = await questionsClient.updateAllQuestions(quizId, questionList);
-    navigate(`/Kanbas/Courses/${courseId}/quizzes`);
-  };
+    const quiz = useSelector((state: KanbasState) => state.quizzesReducer.quiz);
 
-  const handleSaveAndPublish = async() => {
-    handleAddingNew();
-    await updateQuestions();
-    quiz.published = true;
-    navigate(`/Kanbas/Courses/${courseId}/quizzes`);
-  };
+    const currentQuiz = useSelector((state: KanbasState) => state.quizzesReducer.quiz);
 
-  const dispatch = useDispatch();
+    const currentQuestions = useSelector((state: KanbasState) => state.quizzesReducer.questions);
 
-  const handleAddingNew = () => {
-    client.createQuiz(courseId, quiz).then((q) => dispatch(addQuiz(q)));
-  };
+    const handleFinalSave = async (publishStatus: any) => {
+        let totalPoints = 0;
+        currentQuestions.forEach((question) => {
+            totalPoints += question.points;
+        });
 
-  const handleUpdate = async () => {
-    console.log(quiz);
-    const res = await client.updateQuiz(quiz);
-    dispatch(updateQuiz(quiz));
-  };
+        if (totalPoints > currentQuiz.points) {
+            alert("Total points for questions exceeds total points for quiz");
+            return;
+        } else {
+            if (quizId === "newQuiz") {
+                client.createQuiz(courseId, currentQuiz).then((res) => {
+                    console.log(res);
+                    if (publishStatus === true) {
+                        navigate(`/Kanbas/courses/${courseId}/Quizzes`);
+                    } else {
+                        navigate(`/Kanbas/courses/${courseId}/Quizzes/${res._id}/details`);
+                    }
+                });
+            } else {
+                client.updateQuiz(currentQuiz).then((res) => {
+                    if (publishStatus === true) {
+                        navigate(`/Kanbas/courses/${courseId}/Quizzes`);
+                    } else {
+                        navigate(`/Kanbas/courses/${courseId}/Quizzes/${res._id}/details`);
+                    }
+                });
+            }
+        }
+    };
 
-  return (
-    <div>
-      
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Navigate to="details" />} />
-        <Route path="details" element={<QuizDetail />} />
-        <Route path="questions" element={<QuizQuestion />} />
-      </Routes>
-      <br />
-      <br />
-      <hr style={{ marginLeft: "10px" }} />
-      <div style={{ marginLeft: "10px" }}>
-        <div
-          className="d-flex justify-content-between"
-          style={{ paddingTop: "15px" }}
-        >
-          <span style={{ marginLeft: "10px", paddingTop: "5px" }}>
-            <input type="checkbox" />
-            Notify users that this content has changed
-          </span>
-          <span>
-            <Link
-              to={`/Kanbas/Courses/${courseId}/quizzes`}
-              onClick={(e) => dispatch(clearQuiz())}
-              className="btn me-2"
-              style={{ height: "fit-content", backgroundColor: "#E0E0E0" }}
-            >
-              Cancel
-            </Link>
-            <Link
-              to={`/Kanbas/Courses/${courseId}/quizzes`}
-              onClick={handleSaveAndPublish}
-              className="btn me-2"
-              style={{ height: "fit-content", backgroundColor: "#E0E0E0" }}
-            >
-              Save and Publish
-            </Link>
+    useEffect(() => {
+        if (quizId === "newQuiz") {
+            dispatch(setQuiz({
+                accessCode: "",
+                assignmentGroup: "Quizzes",
+                availableDate: "",
+                courseId: courseId,
+                description: "",
+                dueDate: "",
+                lockQuestionsAfterAnswering: "No",
+                multipleAttempts: "No",
+                name: "Default Quiz",
+                oneQuestionAtATime: "Yes",
+                points: "20",
+                published: false,
+                questions: [],
+                quizType: "Graded Quiz",
+                showCorrectAnswers: "No",
+                shuffleAnswers: "Yes",
+                timeLimit: "20",
+                untilDate: "",
+                webcamRequired: "No",
+                _id: "",
+            }));
+            dispatch(setQuestions([]));
+        } else {
+            client.findQuizById(quizId)
+                .then((quiz) => {
+                    dispatch(setQuiz(quiz));
+                });
+            client.findQuestionsForQuiz(quizId)
+                .then((questions) => {
+                    console.log(questions);
+                    dispatch(setQuestions(questions));
+                });
+        }
+    }, [quizId]);
 
-            <Button
-              className="btn btn-danger"
-              style={{ marginRight: "5px" }}
-              onClick={handleSave}
-            >
-              Save
-            </Button>
-          </span>
-        </div>
+    const [activeTab, setActiveTab] = React.useState("details");
 
-        <hr style={{ marginLeft: "10px" }} />
-      </div>
-    </div>
-  );
+    const saveQuiz = (publishStatus: boolean) => {
+
+        if (currentQuiz.name === "") {
+            alert("Please enter a name for the quiz");
+            return;
+        }
+
+        if (publishStatus === true) {
+            dispatch(setQuiz({ ...currentQuiz, published: true }));
+        } else {
+            dispatch(setQuiz({ ...currentQuiz, published: false }));
+        }
+
+        if (quizId !== "newQuiz") {
+            client.findQuestionsForQuiz(quizId).then((response) => {
+                dispatch(setQuestions(response));
+            });
+        }
+
+        handleFinalSave(publishStatus);
+
+        // if (quizId === "newQuiz") {
+        //     client.createQuiz(courseId, currentQuiz).then((res) => {
+        //         console.log(res);
+        //     });
+        // } else {
+        //     client.updateQuiz(currentQuiz).then((res) => {
+        //         console.log(res);
+        //     });
+        // }
+        // // navigate(`/Kanbas/courses/${courseId}/quizzes`);
+        // if (publishStatus === true) {
+        //     navigate(`/Kanbas/courses/${courseId}/Quizzes`);
+        // } else {
+        //     navigate(`/Kanbas/courses/${courseId}/Quizzes/${quizId}/details`);
+        // }
+
+    };
+
+    return (
+        <>
+            <div className="d-flex flex-column gap-4 ">
+                <div className="d-flex flex-row gap-4 align-self-end justify-content-center align-items-center ">
+                    <div className="PointsStatus">
+                        <span>
+                            Points: {quiz.points ? quiz.points : "N/A"}
+                        </span>
+                    </div>
+                    <div className="PublishStatus">
+                        <span>
+                            Not Published
+                        </span>
+                    </div>
+                    <div className="details-button-grp">
+                        <button>
+                            <FaEllipsisV />
+                        </button>
+                    </div>
+                </div>
+                <hr />
+                <nav className="nav nav-tabs mt-2">
+                    <button className={
+                        activeTab === "details" ? "nav-link active" : "nav-link"
+                    } onClick={
+                        () => setActiveTab("details")
+                    }>
+                        Details
+                    </button>
+                    <button className={
+                        activeTab === "Questions" ? "nav-link active" : "nav-link"
+                    } onClick={
+                        () => setActiveTab("Questions")
+                    }>
+                        Questions
+                    </button>
+                </nav>
+                <div className="">
+                    {
+                        activeTab === "details" ? <QuizEditorDetails quizId={quizId} /> : <QuizEditorQuestion quizId={quizId} />
+                    }
+                </div>
+                <div className="">
+                    <hr />
+                    <div className="d-flex flex-md-row flex-column justify-content-between align-items-md-start align-items-center gap-4 fs-6 ">
+                        <label htmlFor="" className="fs-6 h-100  d-flex align-items-center justify-content-center gap-3 ">
+                            <input type="checkbox" name="" id="" />
+                            Notify users that this content has changed
+                        </label>
+                        <div className="submission-button-grp
+                        d-flex gap-3
+                        ">
+                            <button onClick={
+                                () => {
+                                    navigate(`/Kanbas/courses/${courseId}/Quizzes`)
+                                }
+                            }>
+                                Cancel
+                            </button>
+                            <button style={{
+                                backgroundColor: "#f5f5f5",
+                                color: "black",
+                                border: "1px solid #E0E0E0",
+                            }} onClick={
+                                () => saveQuiz(true)
+                            }>
+                                Save & Publish
+                            </button>
+                            <button onClick={
+                                () => saveQuiz(false)
+                            }>
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        </>
+    )
 }
+
 export default QuizEditor;
